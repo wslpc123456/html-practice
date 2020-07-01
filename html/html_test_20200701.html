@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<embed>
+<a name="tips">顶部</a><!-- name 锚点-->
+<h1>标题1</h1><!-- 块元素 -->
+<h2>标题2</h2>
+测试
+<p>测试</p>
+<b>粗体</b><i>斜体</i><big>大号字</big><small>小号字</small><ins>下划线</ins><del>删除线</del><!-- 内联元素 -->
+<sub>下标</sub>测试<sup>上标</sup><em>着重表达</em><strong>加重语气</strong><pre>预格式
+    文本</pre>
+<p style="background-color:red;text-align:center">测试</p>
+
+<table border="1px" width="500px" height="100px" cellspacing="0"  bordercolor="red" align="center">
+    <tr align="center">
+        <th rowspan="3">00</th> <!-- 竖向合并-->
+        <th>aa</th>
+        <th>bb</th>
+    </tr>
+    <tr>
+
+        <td>cc</td>
+        <td>dd</td>
+    </tr>
+    <tr>
+        <td colspan="2">ee</td> <!-- 横向合并 -->
+    </tr>
+</table>
+
+<p>列表</p><!-- type控制属性 -->
+有序表
+<ol>
+    <li>测试</li>
+    <li>测试</li>
+    <li>测试</li>
+</ol>
+无序表
+<ul>
+    <li>测试
+        <ul>
+            <li>测试2
+                <ul>
+                    <li>测试3</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>测试</li>
+</ul>
+自定义表
+<dl>
+    <dt>内容</dt>
+    <dd>注释</dd>
+</dl>
+<p>超链接:<a href="http://www.baidu.com/" target="_blank" >百度</a></p>
+图片链接:<a href="http://www.baidu.com/" target="_blank"><img src="2.jpg" alt="百度"></a><br/>
+网页布局:<!--vertical-align:top 表垂直对齐-->
+<table width="500px" height="500px">
+    <tr>
+        <td  colspan="2" style="background-color:orangered;" align="center"><h1>标题</h1></td>
+    </tr>
+    <tr>
+        <td  style="background-color:cornflowerblue;width:50px;height:400px;vertical-align:top;">测试1<br/>
+            测试2<br/>
+            测试3</td>
+        <td style="background-color:yellow;vertical-align:top">内容</td>
+    </tr>
+    <tr>
+        <td style="background-color:mediumvioletred;height:50px;" colspan="2">底部</td>
+    </tr>
+</table>
+<form action="url" method="post" name="名称" align="center">
+    文本框<input type="text" name="user"><br/> <!-- name当前控件名称 value当前控件的值-->
+    密码<input type="password" name="password"><br/>
+    单选框<input type="radio" name="math" value="1">1
+    <input type="radio" name="math" value="2">2<br/>
+    复选框<input type="checkbox" name="abc" value="A">A
+    <input type="checkbox" name="abc" value="B">B<br/>
+    重置<input type="reset" name="reset"><br/>
+    提交<input type="submit" name="submit"><br/>
+
+    不可修改(readonly)<input type="text" value="不可修改" readonly="readonly"><br/>
+    不可操作(disabled)<input type="text" value="不可操作" disabled="disabled"><br/>
+    默认选项(checked)<input type="radio" value="A" checked="checked" name="1">A
+    <input type="radio" value="B" name="1">B<br/>
+    输入框长度(size) 文本最大长度(maxlength)<input type="text" size="15px" maxlength="8" name="测试"><br/>
+    提示信息(placeholder)<input type="text" placeholder="提示" name="测试"><br/>
+    自动获取焦点(autofocus)<input type="text" autofocus="autofocus"><br/>
+
+    下拉菜单:
+    <select>
+        <option>选项1</option>
+        <option>选项2</option>
+        默认选项<option selected="selected">选项3</option>
+        <option>选项4</option>
+    </select><br/>
+    同时显示选项数(size)
+    同时选择选项数(multiple)
+    <select multiple="multiple" size="2">
+        <option>选项1</option>
+        <option>选项2</option>
+        <option>选项3</option>
+        <option>选项4</option>
+    </select><br/>
+    文本域:宽度控制(cols) 高度控制(rows) 文本长度控制(maxlength)
+    <textarea cols="10" rows="1" maxlength="10">
+
+    </textarea><br/>
+    预定义列表:
+    <input type="text" name="" list="list_1">
+    <datalist id="list_1">
+        <option>预选项1</option>
+        <option>预选项2</option>
+        <option>预选项3</option>
+    </datalist><br/>
+    邮箱(email) 数字(number) 日期(date)选择器
+    <input type="email" name="">
+    <input type="submit" name="">
+    <input type="date" name=""><br/>
+</form>
+嵌入视频(embed):
+<embed src="movie.ogg"></embed><br/>
+嵌入视频(video) 自动播放(autoplay) 添加播放插件(controls) 循环播放(loop)
+<video src="movie.ogg" controls="controls" autoplay="autoplay" loop="loop"></video><br/>
+播放音频
+<audio src="horse.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio><br/>
+内联框架 边框线(frameborder) 滚动条(scrolling) 外框边距(marginwidth/marginheight)
+<iframe src="http://www.baidu.com" width="200px" height="200px" frameborder="0" scrolling="1"></iframe><br/>
+<a href="#tips">回到顶部</a><br/>
+</body>
+</html>
