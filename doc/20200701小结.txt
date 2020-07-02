@@ -1,0 +1,13 @@
+布局:table tr th td
+border:边框宽度 width height 宽和高 cellspacing内框和外框距离 align对齐方式(valign:top 竖着对齐)
+rowspan 竖着合并 colspan横着合并 
+<a> target:打开方式(_blank 新建空白页打开)
+<form><input> </form>text文本框 单选radio 复选checkbox 提交 submit
+不可修改 readonly 不可操作 disable 默认选项checked autofocus自动获得焦点
+<select> size同时显示选项数 multiple同时选择选项
+<textarea>文本域 cols宽度 rows高度 maxlength字符数
+<datalist>预定义列表 定义id 在input里面用list="id"使用
+<vidio><audio> src="url" 定义插件controls loop循环 autoplay自动播放
+frame 定义框架 <frameset cols/rows="百分比,百分百"><frame src="url">
+不能包含body使用
+
