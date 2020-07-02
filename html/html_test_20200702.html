@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <link rel="stylesheet" type="text/css" href="../css/style_test.css"> <!-- 外部样式表 -->
+    <style type="text/css">
+        /* 元素选择器 */
+        p,h1,h2,h3,li,option{
+
+        }
+        /* 类别选择器 */
+        .style_1,.style_2{
+            color:pink;
+        }
+        /* id选择器 */
+        #one{
+            color:blue;
+        }
+        /* 后代选择器 */
+        ol b{
+            color:orangered;
+        }
+        /* 子元素选择器 */
+        li>b{
+            color:gray;
+        }
+        /* 相邻选择器 */
+        ol+select{
+            color:red;
+        }
+        /*属性选择器*/
+        a[href="http://www.baidu.com"]{
+            color:yellow;
+        }
+        /*行高 line-height 字符间距 letter-spacing  字间距 word-spacing 首行缩进 text-indent 文本修饰(上中下划线)text-decoration
+文本对齐方式 text-align  text-transform 控制文本字母大小写*/
+        p.test{
+            line-height:2px;
+            letter-spacing:2px;
+            word-spacing:1em;
+            text-indent:2em;
+            text-decoration:underline;
+            text-align:center;
+
+        }
+        /* :link未点击链接 :visited已点击链接 :hover鼠标悬停链接 :active鼠标点击到释放的时间内 */
+        a:link{
+            color:red;
+        }
+        a:visited{
+            color:blue
+        }
+        a:hover{
+            color:yellow;
+        }
+        a:active{
+            color:pink;
+        }
+        input:focus{
+            background-color:black;
+        }
+      p.bg_1{
+          width:27px;
+          height:23px;
+          background-image:url(3.JPG);
+      }
+      /* bg-image:url()背景图片 bg-repeat平铺方式 bg-position 图片位置 */
+        body{
+            background-image:url(3.JPG);
+            background-repeat:no-repeat;
+            background-position:50% 50%;
+        }
+        /* 列表 修改图标(image:url())和位置(position)*/
+        li.list_1{
+            list-style:url(3.jpg) inside;
+        }
+        /*table 和 td边框线需要分别设置 collapse是把单元格间距变为0,所以不能和spacing一起使用 vertical-align 垂直对齐*/
+        table{
+            border-style:solid;
+            border-collapse:collapse;
+        /*  border-spacing:20px 50px;    */
+            text-align:left;
+            vertical-align:top;
+            width:200px;
+            height:200px;
+        }
+        table td{
+         border-style:solid;
+        }
+        /*在元素前后添加内容 :befor/after 首行添加样式 :first-line 首字母:first-letter*/
+        p.change:before{
+            content:url(3.JPG);
+        }
+    </style>
+</head>
+<body>
+<h1 class="style_1">这是一个标题</h1>
+<p style="color:green">这是一段内容</p><!--继承关系 内联样式表>外联样式表>外部样式表 -->
+<p id="one">这是另一段内容</p>
+<ol>
+    <li class="style_2">表单</li>
+    <li><b>另一个</b><i>的</i>表单2</li>
+</ol>
+<select>
+    <option>选项1</option>
+    <option>选项2</option>
+    <option>选项3</option>
+</select><br/>
+<a href="http://www.baidu.com">百度</a>
+
+<a href="#">这是一个链接</a>
+<!-- focus有焦点的元素 first-child第一个子元素 -->
+输入框:<input type="text" name="">
+
+<!-- font-family字体 font-weight文本粗细 font-size文本大小 font-style规定斜体文本 -->
+<ul>
+    <li class="list_1">内容</li>
+    <li>内容</li>
+</ul>
+<table>
+    <tr>
+        <td>内容</td>
+        <td>内容</td>
+    </tr>
+    <tr>
+        <td>内容</td>
+        <td>内容</td>
+    </tr>
+</table>
+<p class="change">这是内容</p>
+</body>
+</html>
