@@ -1,0 +1,14 @@
+元素选择器  p h1 li {}
+id选择器 #name{}
+后代选择器 ol b{}
+子元素选择器 li>b{}
+相邻选择器 li+select{}
+属性选择器a[href="http://www.baidu.com"]{}
+行高 line-height 字符间距 letter-spacing  字间距 word-spacing 首行缩进 text-indent 文本修饰(上中下划线)text-decoration
+文本对齐方式 text-align  text-transform 控制文本字母大小写
+:link未点击链接 :visited已点击链接 :hover鼠标悬停链接 :active鼠标点击到释放的时间内
+bg-image:url()背景图片 bg-repeat平铺方式 bg-position 图片位置
+list-style 列表 修改图标(image:url())和位置(position)
+border-style 边框线 border-collapse 单元格间距 text-align文本对齐方式 vertical垂直对齐方式
+:before :after 元素前后添加样式
+font-family字体 font-weight文本粗细 font-size文本大小 font-style规定斜体文本
