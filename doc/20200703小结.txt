@@ -1,0 +1,12 @@
+行内元素有<span><a><br> <sup/sub> <img> 字体样式<b><i><strong>等 还有<input><select><textarea>等文本框形式
+块级元素 有<p><h1~6> <hr> <ol><ul><dl>三种列表 表格<table>表单<form> 和<div>
+CSS盒模型: 元素所占的空间类似一个盒子 中间是内容区(content),当内容过多时可能会被撑大 需要使用overflow属性处理
+内容区与边框(border)之间的空白叫内边距(padding) 同时边框外也会占用一部分空白区域,边框与其距离叫做外边距(margin)
+html语义化:写出的代码要规范容易读,使用正确的标签实现功能,而不是为了实现功能写出一些让人难以理解的代码,这能提高效率
+有外部样式表 内部样式表 内联样式表3种方式
+link和@import的区别
+link是XHTML标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS。
+link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。
+link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。
+link支持使用Javascript控制DOM去改变样式；而@import不支持(我暂时还没有用过@import)
+清楚浮动的方法:1.父级div定义 height 2.结尾处加空div标签 clear:both3.父级div定义 伪类:after 和 zoom 4.overflow:hidden
