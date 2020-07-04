@@ -1,12 +1,45 @@
-行内元素有<span><a><br> <sup/sub> <img> 字体样式<b><i><strong>等 还有<input><select><textarea>等文本框形式
-块级元素 有<p><h1~6> <hr> <ol><ul><dl>三种列表 表格<table>表单<form> 和<div>
-CSS盒模型: 元素所占的空间类似一个盒子 中间是内容区(content),当内容过多时可能会被撑大 需要使用overflow属性处理
+一.行内元素有哪些
+行内元素有:
+1.标签类型,<span></span <a> <br /> <img>等
+2.字体样式,包括<b></b> <i></i> <strong></strong> <sup></sup> <sub></sup>等
+3.其他,<input></input> <select></select> <textarea><textarea/>等文本框形式
+
+二.块级元素有哪些
+1.<p></p>段落 <h1~6></h1~6>标题
+2.<hr />分割线 <ol></ol> <ul></ul> <dl><dl> <li></li>等列表
+3.表格<table></table>以及<tr></tr> <td></td> <th></th>
+4.表单<form></from>和<div></div>
+
+三.CSS的盒模型的理解
+答:CSS盒模型: 元素所占的空间类似一个盒子 中间是内容区(content),当内容过多时可能会被撑大 需要使用overflow属性处理
 内容区与边框(border)之间的空白叫内边距(padding) 同时边框外也会占用一部分空白区域,边框与其距离叫做外边距(margin)
-html语义化:写出的代码要规范容易读,使用正确的标签实现功能,而不是为了实现功能写出一些让人难以理解的代码,这能提高效率
-有外部样式表 内部样式表 内联样式表3种方式
-link和@import的区别
-link是XHTML标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS。
-link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。
-link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。
-link支持使用Javascript控制DOM去改变样式；而@import不支持(我暂时还没有用过@import)
-清楚浮动的方法:1.父级div定义 height 2.结尾处加空div标签 clear:both3.父级div定义 伪类:after 和 zoom 4.overflow:hidden
+
+四.简述一下你对HTML语义化的理解
+答:html语义化:写出的代码要规范容易读,使用正确的标签实现功能,而不是为了实现功能写出一些让人难以理解的代码,这能变相提高其他人的效率和兼容性.
+
+五.CSS引入的方式有哪些?
+有外部样式表 内部样式表 内联样式表3种方式.推荐使用外部样式表.
+
+六.link和@import的区别是?
+link和@import的区别:
+1.link是XHTML标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS。
+2.link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。
+3.link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。
+4.link支持使用Javascript控制DOM去改变样式；而@import不支持(我暂时还没有用过@import)
+
+七:CSS清除浮动的几种方法？
+清除浮动的方法:
+1.父级div定义 height
+2.结尾处加空div标签 clear:both
+3.父级div定义 伪类:after 和 zoom
+4.设置overflow:hidden属性
+
+学习笔记:
+1.给父元素 添加overflow: hidden处理溢出的内容
+2.通过嵌套 div块实现网页的布局 需要设置 width height float align和vertical-align等属性,通过设置background-color使布局更明显.
+3.在css中用float:left/right属性定义div块使其横向排列 需要注意的是div1 div2 div3 3个div块使用float:left float:right float:right进行定义后
+会变为 div1 div3 div2的顺序.
+4.绝对定位和相对定位 绝对定位:position:absolute 相对于父元素进行定位 脱离文档流,不占用原来位置 可用z-index调整覆盖的高度 top left调整位置
+  相对定位:position:relative 相对初始位置进行移动 占据原来的位置 用 top left调整位置
+5.实现鼠标移动到指定位置出现下拉列表:css给ul相对定位,li绝对定位,设置ul状态为display:none(隐藏) 然后设置触发时机:hover{display:block(出现)}
+6.cursor: pointer让鼠标变为手形.
