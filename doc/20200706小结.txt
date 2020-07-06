@@ -1,0 +1,36 @@
+一般在<head>添加<script>标记来使用javascript
+alert('  ') 弹出警告框\
+document.write(' ')网页显示
+console.info(' ')打印到控制台
+defer 延迟执行
+var 声明变量 方法内部var局部变量 内部不加var全局变量 外部加var全局变量
+number类型:整数和小数 NAN:不是数 小数相加会损失精度
+parseInt(' ')转换成Int类型输出 如果无法转换则会提示NAN
+undefined 数据类型 值只有"undefined"  表示变量被声明但没有赋值
+ string 字符串类型
+boolean 布尔类型 只有"ture"和"false"两个值
+object 引用类型 [1,2,3]数组类型 new Date()日期类型 {}空类型 null 空值
+ 根据变量的值决定类型 typeof 操作符 判断数据类型 alert( typeof a)
+==自动转换 比较值 ===自动转换 比较值,再比较数据类型
+push 往数组尾部放入元素 返回新数组长度 pop移除数组最后一个元素 返回被移除的元素
+shift 从头部移除一个元素 返回移除的元素 unshifit从头部插入多个元素,返回新数组的长度
+splice 操作数组本身 第一个参数表示起始位置 第二个截取数量 第三个以后:从截取位置追加元素 返回截取内容
+slice 不操作数组本身 第一个参数表示起始位置 第二个表示截止位置 返回截取内容
+concat 不操作数组本身 合并两个数组
+join(' ') 不操作数组本身 在元素之间添加' '之间的内容
+sort操作数组本身 正序排序 按照大小排列(按照字符串序列比较)
+reverse操作数组本身 按照位置排列
+indexOf 只有1个参数表示传值 返回索引位置(从0开始)的值 有2个参数第一个参数表示起始位置 第二个传值(返回的是相对起始位置的值) lastindexof 从后往前找
+every 对数组每一项进行遍历,如果都返回true 则结果为true 一项返回false则返回false
+filter 对数组的每一项运行一次函数 返回执行后的结果
+forEach 循环数组的每一个值并执行方法
+map 对数组的每一项运行一次函数 返回执行完毕后新的结果
+some 和every相反 有一项true则返回true 都返回false才返回false
+reduce 前一个值prev 当前值cur 索引位置 array 函数定义一个方法使用前一个值和当前值
+ruduceright 从右开始遍历
+object:所有类的基础类
+for in方法遍历对象
+constructor 取得创建对象的函数
+hasOwnProperty 用于检测给定属性在对象中是否存在
+propertyIsEnumerable 检测给定属性是否能被 for in枚举
+toString 返回对象的字符串表示 valueOf返回对象的字符串 数值或布尔表示
