@@ -1,0 +1,11 @@
+required用来设置必填项
+placeholder来设置提示
+vertical-align这个属性只对行级元素生效 div是块级元素
+使用  display:block; 来设置行高使元素位于垂直居中
+      height:100%;
+      line-height:50px;
+添加<div style="clear: both"></div>来清除浮动
+使用 text-align: right; 来控制文字所占的体积相同
+     display:inline-block;
+     width:20%;
+待解决问题:缩小后排版乱了
