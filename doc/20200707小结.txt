@@ -1,0 +1,18 @@
+去掉数组中重复的项:1.把数组中的元素转化为对象 2.把对象转换为元素放到新的数组中(用for in方法遍历)
+Global对象(全局的)不存在的对象
+对不标准URL进行编码:encodeURI encodeURIcomponent(常用,任何不标准文字都会进行转码)
+同理decodeURI decodeURIcomponent 进行解码
+eval(string)无形的JavaScript解析器 数组字符串直接使用 对象使用'('+ +')'转换
+parseInt和parseFloat 把字符串转为Int和Float类型
+escape unescape 中文转码和解码
+isNAN判断一个变量是否是number类型 如果不是返回true 是返回false
+NAN是js中唯一一个自己和自己不等的
+Math.random()产生返回一个任意[0,1)的数
+参数列表相当于函数入口,return相当于函数出口 函数是function类型 是可以嵌套的
+function语句式的函数 会被JavaScript优先解释
+函数的参数argument对象:可以访问函数的实际参数 JS中形参和实参数量可不一致 argument.callee指向函数本身(通常用于递归)
+this对象是在运行时期基于执行环境所绑定的 this总是指向调用者
+call apply  简单用法:绑定函数用于传递参数 调用
+作用域:环境变量可以一层一层向上进行追溯,可以访问它的上级环境变量和函数 一层一层向上追溯 因此全局变量效率较低
+js没有块级作用域,慎用 if for
+闭包:一个函数能访问另外一个函数作用域的变量.

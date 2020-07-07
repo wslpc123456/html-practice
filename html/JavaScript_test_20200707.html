@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8">
+        //实现去掉数组中重复的项
+        /*
+        var arr=[1,2,2,4,4,6,7,9,9];
+        var toObject =function(arr){
+            var obj={}; //定义一个空对象用来装元素
+            var i=0;
+            for(var j=arr.length;i<j;i++ ){
+                obj[arr[i]]=true;  //将元素装入对象中,利用对象不能重复的特性
+            }
+            return obj;
+        };
+        var keys=function(obj){ //再把对象装回数组
+            var arr=[];//定义空数组用来装元素
+            for(var a in obj){
+                arr.push(a);
+            }
+            return arr;
+        };
+        alert(keys(toObject(arr)));
+        */
+
+        /*alert(encodeURI(uri));*/
+        /*
+        alert(encodeURIComponent(uri));
+        */
+        /*
+        var c='var a=5; var b=10';
+        eval(c);
+        alert(a+b);
+        */
+        /*
+        var a="{name:'z3' , age:20}";
+        var b=eval('('+a+')');
+        alert(b.name);
+         */
+        /*
+        var a='[1,2,3,4,5]';
+        alert(eval(a));
+        */
+        /*
+        var a=100*Math.random();
+      alert(a);*/
+        /*
+        var date=new Date();
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var day=date.getDay()+5;
+        var tim=date.getTime();
+        document.write("今天是"+year+'年'+month+'月'+day+'日'+tim);
+        */
+       /*
+       //函数的嵌套执行
+       function test1(aa){
+            aa();
+        }
+        function test2(){
+            alert("执行");
+        }
+        test1(function(){
+            alert("也执行");
+        });
+        function test3(){
+             function test4(){
+                alert("test4执行");
+            }
+            return true;
+
+        }*/
+       /*
+       //函数三种定义方法
+        function test1(){alert("我是test1")}
+        test1();
+        var test2 = function(){alert("我是test2")};
+        test2();
+        var test3 =new Function('a','b','return a+b;');
+        alert(test3(10,15));
+        */
+       /*
+       //访问函数的实际参数:argument
+       function test(a,b,c,d){
+           alert(arguments.length);
+           alert(arguments[0]);
+           return a+b;
+       }
+       alert(test(5,10));
+       */
+       /*
+       var k=10;
+       function test(){
+           this.k=20; //test()执行时候this指向window,因为this始终指向使用者
+       }
+       test();
+        alert(test.k); //undefined
+        alert(k); //20 第一个k被覆盖了
+         */
+        /*
+        //call和apply的使用
+       function num(x,y){
+         return x+y;
+    }
+    function call1(sum1,sum2){
+         return num.call(this,sum1,sum2);//将一个特定函数(sum) 绑定到特定作用域(this 指call1) 传递参数(sum1,sum2)
+    }
+    function apply1(sum1,sum2){
+         return num.apply(this,[sum1,sum2]); //同上,但以数组的形式传递
+    }
+    alert(call1(10,20));
+    alert(apply1(15,25));
+
+    color='red';
+    var obj ={color:'blue'};
+    function showColor(){
+        alert(this.color);
+    }
+    //showColor.call(this);
+        showColor.call(obj); //不同作用域调用
+        */
+        //简单模拟call
+        /*
+        function test(a,b){
+            return a+b;
+        }
+        function Obj(x,y){
+           this.x=x;
+           this.y=y;
+            return x*y;
+        }
+        var o=new Obj(10,20);
+        o.a=test;
+        alert(o.a(o.x,o.y));
+        delete o.a;
+        //模拟高级语言的块级作用域
+        (function a(){alert('我直接执行了');})();
+        */
+
+        //闭包 封闭性 起一个保护变量的作用
+       /* var name='A';
+       var obj ={
+           name:'B',
+           getName:function(){
+               return function(){
+                   return this.name;
+               }
+           }
+       };
+       alert(obj.getName()());*/
+       /*
+       function f(x){
+           var temp=x; //执行后temp被标记未被使用
+           return function(x){
+               temp +=x; //执行后temp又被标记被使用,因此被保留
+               return temp;
+           }
+       }
+       var a=f(50);
+       alert(a(5));
+        alert(a(10));
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
