@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8">
+        /*
+        //工场模式
+        //函数第一个字母大写 约定俗成表示一个类
+        function  Function(name,sex,age){
+            this.name = name;
+            this.sex =sex;
+            this.age=age;
+            this.sayName=function(){ alert(this.name)};
+           }
+           var p1=new Function('z3','男',20);
+           p1.sayName();
+        //new 关键字 传递参数 执行模版代码 返回对象
+        var p2=new Function("张三",'男',20);
+        p2.sayName();
+
+        //判断一个对象是否是另外一个对象的实例
+        alert(p2 instanceof Function);
+        alert(p1 instanceof Object);
+
+        var o={};
+        Function.call(o,'z4','女',18);
+        alert(o.name);
+        */
+        /*
+        //原型 prototype
+        //构造函数 引用
+      function F(name,sex,age){
+          this.name=name;
+          this.sex=sex;
+          this.age=age;
+         this.sayName= function() {
+              alert('我是名字');
+          }
+      }
+      var p1=new F('z3','n1');
+      var p2=new F('l4','n2');
+      alert(p1.sayName==p2.sayName); //false
+
+        function A(name,sex,age){
+            this.name=name;
+            this.sex=sex;
+            this.age=age;
+            this.sayName=sayName;
+        }
+        //定义了一次函数 提高效率
+        function sayName(){
+            alert(this.name);
+        }
+        var p3=new A('z3','n1');
+        var p4=new A('l4','n2');
+        p1.sayName();
+        p2.sayName();
+        alert(p3.sayName==p4.sayName);
+        */
+        //prototype 每个创建函数都有一个 prototype对象 这个对象其实是一个指针,这个指针总指向一个对象
+        //这个对象的用途就是将特定的属性和方法包含在内,起一个所有实例共享的作用
+        //构造函数.prototype= 原型对象   原型对象.constructor=构造函数    实例对象.prototype=原型对象
+       /* function F(name,age){
+            F.prototype.name='Z3';
+            F.prototype.age='20';
+            F.prototype.sayName=function(){alert(this.name)};
+        }
+        var p1=new F();
+        var p2=new F();
+        /*alert(p1.name);
+        alert(p2.name);
+        alert(p1.age);
+        alert(p1.age);
+        p1.sayName();*/
+        //读取对象属性时先搜索实例对象里name的属性,如果没有再去搜索原型对象里name的属性,都没有则返回undefined
+        //可以存储原型用于数据恢复
+       /* p2.name='w5';
+        //delete p2.name; //删除实例对象里的属性
+        alert(p2.name);
+        //hasOwnProperty() 判断一个属性是属于原型还是实例
+        alert(p2.hasOwnProperty(name));
+
+        //in 判断属性是否存在实例对象和原型对象中 只要存在于其中一个就返回true
+        alert('name' in p1); //true
+        alert('name' in p2); //true
+
+        //判断属性是否在原型中存在 1:判断是否在实例中存在(hasOwnProperty) 2:判断属性是否存在(in) 3:相与后得到是否在原型中存在
+        function ff(object,name) {
+            return !object.hasOwnProperty(name) && name in object;
+        }
+        var p3 =new F();
+        p3.name='aa';
+        alert(ff(p3,'name'));*/
+         //ECMA5新特性:Object.Keys拿到当前对象所有Keys 返回一个对象内所有属性的数组
+        //constructor 属性不能被枚举
+       /* function F(name,age){
+            F.prototype.name='Z3';
+            F.prototype.age='20';
+            F.prototype.sayName=function(){alert(this.name)};
+        }
+        var p1=new F();
+        p1.name='z3';
+        p1.age=20;
+       var arr=Object.keys(p1);
+       alert(arr);*/
+       //forEach 循环遍历数组每一项 只适合遍历一维数组
+        //模拟each方法
+        var arr=[1,2,3,[4,[5]]];
+        /*arr.forEach(function(item,index,array){
+            alert(item);
+        });*/
+        /*
+        //原型扩展对象的属性和方法
+        Array.prototype.each=function(fn){
+
+            try{
+               this.i || (this.i=0); //计数器 记录元素初始位置
+                //严谨判断什么时候走each方法
+               if(arr.length>0 && fn.constructor == Function)
+               {
+                   //循环遍历数组每一项
+                   while(this.i<this.length){//while循环范围
+                       //获取数组的每一项
+                       var a=this[this.i];
+                       if (a && a.constructor == Array){
+                           a.each(fn);
+                       }
+                       else{//如果不是数组
+                           //目的为了把参数传递给fn并让其执行
+                           fn.call(a,a);
+                       }
+                       this.i++;
+                   }
+                   this.i=null;//释放内存
+               }
+            }catch(ex){}
+          return this;
+        };
+        arr.each(function (item){
+            alert(item);
+        } ); //arr:对象 each:arr调用的一个函数,目的将一个属性为item的函数传递进来后显示item
+      */
+        //简单原型
+        /*
+        function F(){};
+        F.prototype ={
+            //constructor:F, //必须得表示原型对象的构造器
+            name:'z3',
+            age:20,
+            job:'程序员',
+            say:function(){
+                alert('原型函数')
+            }
+        };
+        //ECMA5给原型对象重新设置构造器的方法 Object.definePropery();
+        //参数1:重设构造器对象 参数2;设置什么属性 参数3:option配置项
+        Object.defineProperty(F.prototype,'constructor',{
+            enumerable:false,
+            value:F
+        })
+        var p1=new F();
+        alert(p1.name);
+        p1.say();
+        alert(F.prototype.constructor);
+        for(var a in p1){
+            alert(a);
+        }*/
+        /*
+        //原型的动态特性
+        function F(){}
+        //var p1=new F(); //错误
+        F.prototype ={
+            constructor:F,
+            name:'z3',
+            age:20,
+            job:'程序员',
+            say:function(){
+                alert('我是原型函数');
+            }
+        };
+        var p1=new F(); //实例对象在原型对象后创建
+        p1.say();*/
+        /*
+        function F(){}
+        F.prototype={
+            constructor:F,
+            name:'z3',
+            age:20,
+            job:'程序员',
+            friend: ['w5','l4'],
+            sayName:function(){alert("我的名字")}
+        };
+        var p1=new F();
+        var p2=new F();
+        p1.friend.push('z6');
+        p2.friend.push('friend');
+        alert(p1.friend);
+        alert(p2.friend); //属性和方法被所有实例共享:static
+        */
+        /*
+        //原型和构造函数组合模式
+        function F(name,age,job,friend){
+            this.name=name;
+            this.age=age;
+            this.job=job;
+            this.friend=friend;
+
+        }
+        F.prototype={
+            constructor:F ,
+            sayName:function(){
+                alert('我是原型');
+            }
+        };
+        var p1=new F('z3');
+        var p2=new F('l4');
+        alert(p1.name);
+        alert(p2.name);*/
+        /*
+        //动态原型方法
+        if(typeof this.sayName != 'function'){
+            F.prototype.sayName=function () {
+                alert(this.name);
+            }
+        }
+        */
+        /*
+        //稳妥构造函数式 没有this对象 没有关键字 在非常安全的环境中
+        function F(name){
+            var obj={};
+            var name=name;
+            obj.sayName=function(){alert(name)};
+            return obj;
+        }
+        var p1=new F('张三');
+        p1.sayName();*/
+        /*
+        //父类构造函数
+        function Sup(name){
+            this.name=name;
+        }
+        //父类的原型对象
+        Sup.prototype={
+            constructor:Sup,
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+        //子类构造函数 Sub
+        function Sub(age){
+            this.age=age;
+        }
+        //让子类的原型对象等于父类的实例,结果会怎样(实现了JS的继承)
+        //此时原型对象包含指向另一个原型的指针
+        //Sup的实例对象和Sup的原型对象 有一个关系
+        //相应的另一个原型也包含一个指向另一个构造函数的指针
+        //子类的原型的对象构造器变成了父类的构造器
+        Sub.prototype=new Sup('张三');
+        var sub1=new Sub();
+        //alert(sub1.name);
+        //alert(Sub.prototype.constructor);
+        sub1.sayName();*/
+        //原型继承:继承父类的模版和原型对象
+        //父类
+        function F(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        F.prototype.id=10;//父类的原型对象属性
+        F.prototype.sayName=function(){
+            alert(this.name)
+        };
+        //子类
+        /*
+        function Z(sex){
+            this,sex=sex;
+        }
+        Z.prototype=new F('Z3'); //实现继承
+        var b=new Z();
+        alert(b.id)*/
+        //类继承
+        /*
+        function Z(name,age,sex){
+            F.call(this,name,age);
+            this.sex=sex;
+        }
+        var b=new Z("张三",20,'男');
+        alert(b.name);*/
+        /*
+        //原型加借用构造函数=混合继承 缺点:继承了父类2次模版 一次原型对象
+        function Z(name,age,sex){
+            F.call(this,name,age);//构造函数继承
+            this.sex=sex;
+        }
+        Z.prototype=new F();//原型继承 继承父类的原型对象
+        var b =new Z('李四','20','男');
+        alert(b.name);
+        alert(b.id);
+        */
+        function extend(sub,sup){
+            //1 用一个空函数进行中转
+            var a=function(){};
+            a.prototype=sup.prototype;//实现空函数的原型和超类的原型对象转换
+            sub.prototype=new a();//原型继承
+            sub.prototype.constructor=sub;//还原子类的构造器
+            //保存父类的原型对象,方便解耦,可以方便获得父类的原型对象
+            sub.supClass=sup.prototype; //定义子类的静态属性接收父类的原型对象
+        }
+        extend(Z,F);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
