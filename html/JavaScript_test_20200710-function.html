@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8" >
+        <!--引入的核心JS文件-->
+        //搭建工程环境
+       function CarShop(){}
+       CarShop.prototype={
+            sellCar:function(type){
+                var car;
+              switch(type){
+                  case'Audi':car=new Audi();break;
+                  case'Bmw':car=new Bmw();break;
+                  case'Benz':car=new Benz();break;
+                  default:car='you have no money';
+              }
+              return car;
+            }
+       };
+
+        function Audi(){}
+        Audi.prototype={
+            start:function () {
+                alert('Audi is start');
+            },
+            run:function(){
+              alert('Audi is run');
+            }
+        };
+        function Benz(){}
+        Benz.prototype={
+            start:function () {
+                alert('Benz is start');
+            },
+            run:function(){
+                alert('Benz is run');
+            }
+        };
+        function Bmw(){}
+        Bmw.prototype={
+            start:function () {
+                alert('Bmw is start');
+            },
+            run:function(){
+                alert('Bmw is run');
+            }
+        };
+        var shop=new CarShop();
+        var c=shop.sellCar();
+        alert(c);
+        //接下来做两件事1.判断接口的参数类型 2.检验接口里的方法
+        //1.判断接口的参数类型 2.接收methods数组内的方法名 加入到内部定义的一个空数组中
+        var Interface=function(name,methods){
+            if(argument.length!==2){
+                throw new Error('传递的参数必须是2个!');
+            }
+            this.name=name;
+            this.methods=[];
+            for(var i=0;i<methods.length;i++){
+               //判断数组内部元素是否是'string'类型
+                if(typeof methods[i]!=='string'){
+                    throw new Error(i+'这个元素不是string类型');
+                }
+                this.methods.push(methods[i]);
+            }
+        };
+        var AA=new Interface('AA',['ygg','zm']);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

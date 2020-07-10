@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input type="button" value="点击我" id="inp" />
+<script type="text/javascript" charset="UTF-8">
+    /*
+    //简单的函数链式调用
+    function dog() {
+        this.run=function(){
+            alert('the dog is run');
+            return this;
+        };
+        this.eat=function(){
+            alert('the dog is eat');
+            return this;
+        };
+        this.sleep=function(){
+            alert('the dog is sleep');
+            return this;
+        };
+    }
+    var d1 =new dog();
+    //d1.run();
+    //d1.eat();
+    //d1.sleep();
+    d1.run().eat().sleep();
+    */
+    //模拟jquery底层代码
+    /*
+    (function(){
+        //使用了块级作用域 程序启动时里面的代码直接执行
+        //alert('我执行了');
+        //内部的成员变量外部无法访问(除了不加 var的变量)
+    })();
+    alert(a);
+    */
+    /*
+    (function(window,undefined){
+        //$最常用的对象,返回给外界 大型程序开发一般使用'_'作为私有对象(规范)
+        function _$(arguments){
+            //实现代码
+            //正则表达匹配id选择器
+            var idSelector=/#\w+/;
+            this.dom; //此属性接收所得到的元素
+            //如果匹配成功,则接收dom元素 arguments[0]='#inp'
+            alert(idSelector.test(arguments[0]));
+            if(idSelector.test(arguments[0])){
+                this.dom=document.getElementById(arguments[0].substring(1));
+            }
+            else{
+                throw new Error('传入参数类型不符');
+            }
+        }
+        //在Function类上扩展一个可以实现链式编程的方法
+        Function.prototype.method=function(methodName,fn){
+            this.prototype[methodName]=fn;
+            return this;//链式编程的核心
+        };
+        //在_$的原型对象上加一些公共的方法
+        _$.prototype={
+            constructor: _$,
+            addEvent:function (type,fn) {
+                //FF 给你得到的元素,注册事件
+                if(window.addEventListener){
+                this.dom.addEventListener(type,fn);
+                }
+                else if(window.attachEvent){
+                    this.dom.attachEvent('on'+type,fn);
+                }
+                //alert('add调用');
+                return this;
+            },
+            setStyle:function(){
+                alert('set调用');
+                return this;
+            }
+        };
+        //window先注册一个全局变量 与外界产生关系
+        window.$=_$;
+        //写一个准备的方法
+        _$.onReady=function(fn){
+            //1.实例化_$ 真正的注册到window上
+            window.$=function(){
+                return new _$(arguments);
+            };
+            //2.执行传入的代码
+            fn();
+            //3.实现链式编程
+            _$.method('addEvent',function(){}).method('setStyle')
+        };
+    })(window);//程序入口把window传入作用域中
+    $.onReady(function(){
+        //jquery代码
+        //alert('111');
+        var inp=$('#inp');
+        //alert(inp.dom.nodeName);
+        inp.addEvent('click',function(){
+            alert('我被点击了')
+        }).setStyle('backgroundColor','red');
+    });
+    */
+   
+</script>
+</body>
+</html>
