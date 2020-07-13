@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8">
+        document.write('网页显示');
+
+        var a=10;
+        a=new Date();
+        alert(typeof a);
+        var b=1;
+        var c=true;
+        alert(b==c);
+        alert(b===c);
+        var d=[1,2,3,4,5];
+        d.push(6,7);
+        alert(d);
+        d.pop();
+        alert(d);
+        d.shift();
+        alert(d);
+        d.unshift(0);
+        alert(d);
+        var e=[1,2,3,4,5];
+        e.splice(1,2,4,5);
+        alert('e='+e);
+        alert('e='+e.slice(1,3));
+        alert(e.join('+'));
+        var f=[5,3,1,4,2];
+        alert('f='+f.sort());
+        alert('f='+f.reverse());
+        var g={};
+        g.name='z3';
+        g.sex='man';
+        g.sayName=function(){
+            alert(this.name);
+        };
+        for(var h in g){
+            alert(h+'='+g[h]);
+        }
+        alert(g.constructor);
+        alert(g.hasOwnProperty('sex'));
+        function map() {
+            var obj={};
+            //键值对绑定
+            this.get=function (key,value) {
+                obj[key]=value;// 相当于obj.key=value
+            };
+            //查询容器数量
+            this.cx=function () {
+                var i=0;
+                for(var a in obj){
+                    i++;
+                }
+                return i;
+            };
+            //根据键显示值
+            this.zh=function(key){
+                if(obj[key]||obj[key]==0||obj[key]==false){
+                   alert(obj[key]);
+                }
+                else{
+                    throw new Error('没有找到对应的值');
+                }
+            };
+            //显示所有键和值
+            this.xs=function (fn) {
+                for(var z in obj){
+                    fn(z,obj[z]);
+                }
+            }
+        }
+        var x=new map();
+        x.get('key1','123456');
+        x.get('key2','13579');
+        alert('容器数量为'+x.cx());
+        x.zh('key1');
+        x.xs(function(key,value){
+            alert(key+'='+value);
+        })
+        /*
+        //去掉数组中重复的项 缺点:会自动排序;
+        var a=[1,2,2,4,6,7,7,5,9,9];
+        function sx() {
+            var obj = {};
+            //绑定
+            this.get = function (arr) {
+                for(var i=0;i<arr.length;i++) {
+                    obj[arr[i]] =true;
+                }
+            };
+            this.cx=function(){
+                var b=[];
+                for(var a in obj){
+                 b.push(a);
+                }
+                return b;
+            }
+        }
+        var c=new sx();
+        c.get(a);
+        alert(c.cx());
+        //arguments只能在函数内调用,且要赋值 ?
+        function f(a,b,c,d) {
+            alert(arguments.length);
+            alert(arguments[1]);
+           return a+b;
+        }
+        f(5,6);
+        var k=10;
+        function f(){
+            this.k=20;
+        }
+        f();
+        alert(k);//this始终指向执行者 f执行时this指向window window.k=20相当于把k变为了全局变量赋值20
+
+        function X(a,b){
+             return a+b
+        }
+        function Y(c,d) {
+            return X.call(this, c, d);
+        }
+        alert(Y(10,20));
+        //call的作用域
+        color='red';
+        var obj={color:'blue'};
+        function showColor(){
+             return this.color;
+        }
+        alert(showColor.call(this));
+        alert(showColor.call(obj));
+        */
+        /*
+        //简单模拟call
+        function A(a,b){
+            return a+b;
+        }
+        function X(x,y){
+            this.x=x;
+            this.y=y;
+            return x*y;
+        }
+        var z=new X(30,40);
+         z.a=A;
+        alert(z.a(z.x,z.y));
+        delete z.a;
+        //块级作用域
+        (function(){alert('直接执行')})();
+        //返回一个函数
+        function qt(value){
+            var temp=value;
+            return function(value){
+                temp+=value;
+                return temp;
+            }
+        }
+        var a=qt(50);
+        alert(a(5));
+        alert(a(10));//temp得到了保留
+        */
+        //鸭式辨形法
+        /*
+        function Interface(name,methods){
+            //1.判断接口的参数数量
+            if(arguments.length!==2){
+                throw new Error('必须且仅有两个参数')
+            }
+            this.name=name;
+            this.obj=[];
+            //2.判断是否正确传输了方法名称
+            for(var i=0;i<methods.length;i++){
+                if(typeof methods[i]!=="string"){
+                    throw new Error('方法'+i+'必须为string类型');
+                }
+                this.obj[i]=methods[i];
+            }
+        }
+        //实例化一个接口
+        var A=new Interface('A',['eat','run']);
+        //实例化一个类
+        var C=function () {};
+        C.prototype.eat=function () {alert('the dog is eat')};
+        C.prototype.run=function () {alert('the dog is run')};
+        //检验接口里的方法
+        Interface.check=function (object) {
+            //至少得有两个参数(实例对象名 实现的接口名)
+            if(arguments.length<2){
+                throw new Error('传递失败,至少得有两个参数');
+            }
+            //判断方法是否是接口类的类型
+            for(i=1;i<arguments.length;i++){
+                //判断函数是否是接口类的类型
+                if(arguments[i].constructor!==Interface){
+                    throw new Error('这个参数的构造器不是 Interface')
+                }
+             //第一个接口
+                //用一个变量接收实例名
+                var name=arguments[i];
+                //循环接口名中的每一个方法
+                for(j=0;j<name.methods.length;j++){
+                    //用一个变量接收方法名
+                var methodsName=name.methods[j];
+                 if(!object[methodsName]||typeof object[methodsName]!=='function'){
+                     throw new Error('没有找到方法');
+                 }
+                }
+            }
+        };
+        var c1=new C();
+        Interface.check(c1,A);
+        c1.eat();
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
