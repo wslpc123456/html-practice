@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type=text/javascript charset="UTF-8" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../js/script_test_0710.js"></script>
+    <script type=text/javascript charset="UTF-8">
+
+    //粗粒度 细粒度
+
+        //搭建一个工厂环境
+
+    /*
+
+    function CarShop(){}
+    CarShop.prototype={
+    sellCar:function(type){
+    var car;
+    switch(type){
+    case'Audi':car=new Audi();break;
+    case'Bmw':car=new Bmw();break;
+    case'Benz':car=new Benz();break;
+    default:car='you have no money';
+    }
+    Interface.enImp(car,carInterface);
+    return car;
+    }
+    };
+
+    //面向对象 买什么车,去什么商店 商店->卖车->生产车->工厂
+        //卖车商店可能有Audi商店 Benz商店 Bmw商店
+    //super商店 卖车 java里的抽象类 abstract Class 子类继承这个抽象类
+    function CarShop(){}
+    CarShop.prototype={
+      constructor:CarShop,
+        SellCar:function (type) {
+          //销售人员..
+          //var car=CarFactory.createCar(type);
+          //保险,相关售后服务
+           // return car;
+            this.abstractsellcar(type);
+        }
+    };
+    
+    function abstractsellcar(){
+        throw new Error('this methods is abstract');
+    }
+    function BenzCarShop() {}
+    extend(BenzCarShop,CarShop);
+    BenzCarShop.prototype={
+        constructor:BenzCarShop,
+        sellCar:function(type){
+            //var car=CarFactory.createCar(type);
+            //return car;
+            var car;//这是你的车
+            var types=['Benz'];//所有Benz类型的车
+            for(var t in types){ //如果型号匹配
+                if(types[t]===type){
+                    car=CarFactory.createCar(type);
+                }
+                else{
+                    alert('not hava to buy');
+                }
+            }
+            return car;
+        }
+    };
+
+    function BmwCarShop() {}
+        extend(BmwCarShop, CarShop);
+        BmwCarShop.prototype = {
+            constructor: BmwCarShop,
+            sellCar: function (type) {
+            //var car=CarFactory.createCar(type);
+            //return car;
+                var car;
+                var types=['Bmw'];
+                for(var t in types){
+                    if(type==types[t]){
+                        car=CarFactory.createCar(type);
+                    }
+                    else{
+                        alert('not hava to buy');
+                    }
+                }
+                return car;
+            }
+        };
+
+
+    //生产车的工厂 目的就是为了生产车
+    //单体模式
+    var CarFactory={
+    createCar:function (type) {
+    var car=eval('new '+type+'()');//等于 var car=new Benz(); 动态工厂模式
+    Interface.enImp(car,carInterface);
+    return car;
+    }
+    };
+    function thisCar(){}
+    thisCar.prototype={
+        constructor:thisCar,
+        start:function () {
+            alert(this.constructor.name+'  start');
+        },
+        run:function () {
+            alert(this.constructor.name+'  run');
+        }
+    };
+    function Benz(){}
+    extend(Benz,thisCar);
+    Benz.prototype.driveBenz=function () {
+        alert('Benz drive');
+    };
+    function Bmw(){}
+    extend(Bmw,thisCar);
+    Bmw.prototype.driveBmw=function () {
+        alert('Bmw drive');
+    };
+    var shop1=new BmwCarShop();
+    var c1=shop1.sellCar('Bmw');
+    c1.run();
+    c1.start();
+    */
+
+   //桥接模式 把抽象和现实分离开来 使他们可以完全独立变化
+        //应用场景 事件监听回调机制
+        //用户点击按钮向服务器端发送信息
+    //传统设计模式
+    /*
+       $(function () {
+           //1.前台业务逻辑
+           var inp=document.getElementById('inp');//用事件注册方式 在元素上添加事件
+           window.EvenUntil.addHandler(inp,'click',sendReq);
+           //_________________________________________________________________
+           //2.后台业务逻辑
+           //处理后台的函数
+           function sendReq(){
+               //ajax
+               //参数1:后台服务器地址 参数2:对象或字符串(参数) 参数3:回调函数
+               /*
+               $.post('URL',(msg:this.value),function(result) {
+
+               });
+               */
+    /*
+               alert('发送了指定的数据到后台:  '+this.value);
+           }
+
+       });
+       */
+    /*
+    $(function () {
+        //1.前台业务逻辑
+        var inp=document.getElementById('inp');//用事件注册方式 在元素上添加事件
+        window.EvenUntil.addHandler(inp,'click',bridgeHandler);
+
+        //利用桥模式分开两个业务逻辑单元
+        function bridgeHandler(){
+            var msg=this.value;
+            sendReq(msg);
+        }
+        //_________________________________________________________________
+        //2.后台业务逻辑
+        //处理后台的函数
+        function sendReq(msg){
+            //ajax
+            //参数1:后台服务器地址 参数2:对象或字符串(参数) 参数3:回调函数
+            /*
+            $.post('URL',(msg:this.value),function(result) {
+
+            });
+
+            alert('发送了指定的数据到后台:  '+msg);
+        }
+            //单元测试时不用再关心前台页面
+             sendReq('我也是数据');
+    });
+       window.EvenUntil={
+            addHandler:function(element,type,handler){
+                element.addEventListener(type,handler,false)
+            }, //元素 事件类型 回调函数
+            removeHandler:function (element,type,handler) {
+                element.addEventListener(type,handler,false)
+            }
+        }; //实现单体类实现跨浏览器的事件处理程序
+        */
+     //桥模式 特权函数
+    /*
+          var publicClass=function () {
+              var name='张三';
+              //getter访问私有变量
+              this.getName=function(){
+                  return name;
+              }
+          };
+          var p1=new publicClass();
+          alert(p1.getName());
+*/
+    /*
+    var publicClass=function () {
+        var privateMethod=function () {
+            alert('执行了复杂的操作')
+        };
+        //单元测试这个函数
+        //privateMethod();
+        //通过特权函数去访问这个私用的独立单元
+        this.bridgeMethod=function () {
+            return privateMethod();
+        }
+    };
+    var a1=new publicClass();
+    a1.bridgeMethod();
+
+    //桥模式,用桥把多个模式组合在一起
+    //使每个单元都能独立化,实现自己的变化
+    var Class1=function (a,b,c) {
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    };
+    var Class2=function (d,e) {
+        this.d=d;
+        this.e=e;
+    };
+    var BridgeClass=function (a,b,c,d,e) {
+        this.class1=new class1(a,b,c);
+        this.class2=new class2(d,e);
+    }
+    */
+
+
+
+    //组合模式 用一条命令在多个对象激发复杂的或递归的行为
+        //1.可以用通过同样的方法处理对象集合和其中特定子对象
+        //2.可以将子对象封装到一起组织成树状结构,并使整棵树都可以被遍历.
+        /*
+        场景模拟
+       ->公司
+            ->财务部门
+                     ->张一
+                     ->张二
+                     ->张三
+           ->销售部门
+                     ->王四
+                     ->王五
+                     ->王六
+         */
+        //面向对象设计
+    /*
+        var org=function (name){
+            this.name=name;
+            this.depts=[];//部门名
+        };
+        org.prototype={
+            constructor:org,
+            addDept:function(child){
+            this.depts.push(child);
+            return this;
+            },
+            getDept:function () {
+                return this.depts;
+            }
+        };
+        var dept=function (name) {
+            this.name=name;
+            this.person=[];
+        };
+        dept.prototype={
+            constructor:dept,
+            addPersons:function(child){
+                this.person.push(child);
+                return this;
+            },
+            getPerson:function () {
+                return this.person;
+            }
+        };
+        var person=function (name) {
+            this.name=name;
+        };
+        person.prototype={
+            constructor:person,
+            work:function () {
+                document.write(this.name+"work...work...");
+            },
+            sleep:function () {
+                document.write(this.name+"is sleep and ready to work");
+            }
+        };
+       var p1=new person('张1');
+       var p2=new person('张2');
+       var p3=new person('张3');
+       var d1=new dept('开发部门');
+       var d2=new dept('销售部门');
+       d1.addPersons(p1).addPersons(p3);
+       d2.addPersons(p2);
+       var org=new org('公司');
+       org.addDept(d1).addDept(d2);
+       //需求:让一个人去工作
+
+        for(i=0,depts=org.getDept();i<depts.length;i++){
+            var persons=depts[i].getPerson();
+            //alert(persons);
+
+            for(var j=0;j<persons.length;j++){
+               if(persons[j].name==='张3'){
+                   //alert(persons[j]);
+                   persons[j].work();
+               }
+            }
+
+        }
+        */
+    //应用特点:组合模式中只有两种类型对象:组合对象,叶子对象
+    //这两种类型都实现同一批接口
+    // 一般我们会在组合对象中调用其方法并隐方式调用'下级对象'的方法(一般采用递归的形式去做)
+        var ComInterface=new Interface('Com',['addChild','getChild']);
+        var LeafInterface=new Interface('LeafInterface',['work','sleep']);
+        var Com=function(name){
+            this.name=name;
+            this.type='Com'; //说明对象类型 这是一个组合对象
+            this.children=[];  //承装孩子的数组
+        };
+        Com.prototype={
+            constructor:Com,
+            addChild:function (child) {
+                this.children.push(child);
+                return this;
+            },
+            getChild:function (name) {
+                //接收叶子对象类型的数组
+                var element=[];
+                if(name){//让指定名字下所有类型为leaf的对象去执行操作
+
+                }
+                else{
+                    this.children.each(function (item) {
+                    alert(item.name);
+                })}//不传名字代表让所有类型为leaf的对象去执行操作
+                //this.children();
+
+            },
+            work:function (name) {
+                 //得到所有Leaf类型的对象
+                var leafObject=this.getChild(name);
+                for(var i=0;i<leafObject.length;i++){
+                    leafObject[i].work();
+            }
+            },
+            sleep:function (name) {
+                var leafObject=this.getChild(name);
+                for(var i=0;i<leafObject.length;i++){
+                    leafObject[i].sleep();
+                }
+            }
+        };
+        var Leaf=function (name) {
+            this.name=name;
+            this.type='Leaf';
+        };
+        Leaf.prototype={
+            constructor:Leaf,
+            addChild:function (child) {
+            throw new Error('Error Error');
+            },
+            getChild:function (name) {
+               if(this.name ===name){
+                   return this;
+               }
+               else{return null;}
+            },
+            work:function (name) {
+                document.write(this.name+'work...work...');
+            },
+            sleep:function (name) {
+                document.write(this.name+'sleep and ready to work');
+            }
+        };
+    var p1=new Leaf('张1');
+    var p2=new Leaf('张2');
+    var p3=new Leaf('张3');
+    var d1=new Com('开发部门');
+    var d2=new Com('销售部门');
+    d1.addChild(p1).addChild(p3);
+    d2.addChild(p2);
+    var org=new Com('公司');
+    org.addChild(d1).addChild(d2);
+    //所有员工都去努力工作
+    org.work();
+    </script>
+</head>
+<body>
+</body>
+</html>
