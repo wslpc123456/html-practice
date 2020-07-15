@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type=text/javascript charset="UTF-8" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../js/script_test_0710.js"></script>
+    <script type=text/javascript charset="UTF-8">
+        /*
+    //应用特点:组合模式中只有两种类型对象:组合对象,叶子对象
+    //这两种类型都实现同一批接口
+    // 一般我们会在组合对象中调用其方法并隐方式调用'下级对象'的方法(一般采用递归的形式去做)
+    var ComInterface=new Interface('ComInterface',['addchild','getchild']);
+    var LeafInterface=new Interface('LeafInterface',['work','sleep']);
+    var Com=function (name) {
+    this.name=name;
+    this.type='Com';//说明对象的类型(组合对象)
+    this.children=[];//承接孩子的数组
+    };
+    Com.prototype= {
+    constructor: Com,
+    addchild: function (child) {
+    this.children.push(child);
+    return this;
+    },
+    getchild: function (name) {
+    //接收叶子对象类型的数组
+    var elment=[];
+    var pushleaf=function (item) { //判断对象是否为Leaf类型,不是继续递归调用直到调用到Leaf,是则加入elment中
+    if(item.type==='Com'){
+    item.children.each(arguments.callee);
+    }
+    else if(item.type==='Leaf'){
+    elment.push(item);
+    }
+    };
+    //分类讨论
+    //name为总公司的时候
+    //为总公司直接子节点的时候
+    //为总公司间接节点的时候
+    //为叶子节点的时候
+    if (name&&this.name!==name) {
+    this.children.each(function (item) {
+    //如果传递的是二级节点名称
+    if(item.name === name&&item.type==='Com'){
+    item.children.each(pushleaf);
+    }
+    //如果传递的是三、四..N级节点
+    if(item.name!==name&&item.type==='Com'){
+    item.children.each(arguments.callee); //arguments callee指的是 function(item)这个函数本身
+    }
+    //如果传递的是叶子节点
+    if(item.name===name&&item.type==='Leaf'){
+    elment.push(item);
+    }
+    });
+    }
+    //this(org)=>[d1,d2](children)     children[0](d1)=>[name,type,children]  name =>['销售部门'] type=>['Com'] children =>[[name,type],[..],[..]]
+    else {
+    this.children.each(pushleaf);
+    }
+    return elment;
+    },
+    work: function (name) {
+    //得到所有Leaf类型的对象的数组
+    var leafobject = this.getchild(name);
+    for (var i = 0; i < leafobject.length; i++) {
+    leafobject[i].work();
+    }
+    },
+    sleep: function (name) {
+    var leafobject = this.getchild(name);
+    for (var i = 0; i < leafobject.length; i++) {
+    leafobject[i].sleep();
+    }
+    }
+    };
+
+    var Leaf=function (name) {
+    this.name=name;
+    this.type='Leaf';
+    };
+    Leaf.prototype={
+    constructor:Leaf,
+    addchild:function (child) {
+    throw new Error('this method is enabled');
+    },
+    getchild:function (name) {
+
+
+    },
+    work:function (name) {
+    document.write(this.name+'努力工作..');
+    },
+    sleep:function (name) {
+    document.write(this.name+'睡觉为了更好工作...');
+    }
+    };
+    var p1=new Leaf('张1');
+    var p2=new Leaf('张2');
+    var p3=new Leaf('张3');
+    var p4=new Leaf('张4');
+    var p5=new Leaf('张5');
+    var p6=new Leaf('张6');
+    var p7=new Leaf('张7');
+    var p8=new Leaf('张8');
+    var p9=new Leaf('张9');
+    var p10=new Leaf('张10');
+    var p11=new Leaf('张11');
+    var p12=new Leaf('张12');
+    var d1=new Com('分一开发部门');
+    var d2=new Com('分一销售部门');
+    var d3=new Com('分二开发部门');
+    var d4=new Com('分二销售部门');
+    var org1=new Com('分公司一');
+    var org2=new Com('分公司二');
+    var org =new Com('总公司');
+    d1.addchild(p1).addchild(p2).addchild(p3);
+    d2.addchild(p4).addchild(p5).addchild(p6);
+    d3.addchild(p7).addchild(p8).addchild(p9);
+    d4.addchild(p10).addchild(p11).addchild(p12);
+    org1.addchild(d1).addchild(d2);
+    org2.addchild(d3).addchild(d4);
+    org.addchild(org1).addchild(org2);
+
+    //所有员工都去努力工作
+    var arr=[1,2];
+    org.work('张10');
+*/
+        //门面模式(facade)一般有两个作用:简化类的接口 ,清除类与客户代码的耦合性
+        //目的是开发人员用更简单的方法调用复杂的方法
+        //门面模式的概念:简化API接口 最经典的时间
+
+        //做一件事,需要调用两个函数 A和B
+        /*
+        function A(x) {
+            
+        }
+        function B(y) {
+            
+        }
+        function AB(x,y) {
+            A(x);
+            B(y);//最简单的门面模式
+        }
+        */
+        /*
+     //简单需求:获得页面上的元素 给一个元素设置CSS样式
+
+        //需求变化:给多个元素的CSS设置相同样式
+        function setStyle(elmentId,prop,val) {
+           for(var i=0;i<elmentId.length;i++){
+              document.getElementById(elmentId[i]).style[prop]=val;
+           }
+        }
+        //给多个元素设置多个CSS样式
+        function setCss(elment,option){
+          for(var prop in option){
+              setStyle(elment,prop,option[prop]);
+          }
+        }
+
+        window.onload=function(){
+            //setStyle(['div1','div2','div3'],'color','red');
+            setCss(['div1','div2','div3'],{
+                color:'white',
+                background:'black'
+            });
+        };
+     */
+        //适配器 进行中转
+        /*
+        var obj={           //原口 不能更改
+            str1:'111',
+            str2:'222',
+            str3:'333'
+        };
+        function atob(obj){//适配器
+         interfaceMethod(obj.str1,obj.str2,obj.str3);
+        }
+        function interfaceMethod(a,b,c) {//新口
+            //复杂操作
+        }
+        */
+        /*
+        //企业开发中 应用 JavaScript库(extjs,jquery.yui)
+        //YAHOO框架和prototype程序员适配
+        //prototype $ function (根据id获得指定的dom元素) (不需要传递形参)
+        //YUI get function(传递一个参数 多个id多个参数
+        function $() {
+            var elements=[];
+            for(var i=0;i<arguments.length;i++){
+                var element=arguments[i];
+                if(typeof element ==='string'){
+                    element=document.getElementById(element);
+                }
+                if(arguments.length===1){
+                    return element;
+                }
+                else{
+                    elements.push(element);
+                }
+            }
+            return elements;
+        }
+        var YAHOO={};  //传递一个参数 类型不是字符串就是数组
+        YAHOO.get=function(el){
+          if(typeof el === 'string'){
+              return document.getElementById(el);
+          }
+          if(el instanceof Array){
+              var elements=[];
+              for(var i=0;i<el.length;i++){
+                  elements[elements.length]=YAHOO.get(el[i]);
+              }
+              return elements;
+          }
+          if(el){
+              return el;
+          }
+          return null;
+        };
+        YAHOO.get=YUIT;
+         function YUIT(){
+             //YUIT开发人员永远只传递一个参数
+             if(arguments.length===1){
+                 var e=arguments[0];
+                 return $.apply(window,e instanceof Array?e:[e]);
+             }else{
+                 return $.apply(window,arguments)
+             }
+         }
+
+        window.onload=function () {
+            //alert($('div1'));
+            //YUI开发人员习惯的写法
+            //var domarr=YAHOO.get(['div1','div2']);
+            //alert(domarr);
+            //prototype
+            var domarr=YAHOO.get('div1','div2');
+            alert(domarr);
+        };
+        */
+        /*
+        //装饰者模式
+        //为对象添加新特性 并不适合创建新的子类
+        //1.实现同样的接口 2.需要有子类 用来透明的把原始对象包装在具有相同接口的新对象中
+        var carInterface=new Interface('carInterface',['getPrice','assemble']);
+        var car=function (car) {
+            this.car=car;//就是为了让子类多一个继承父类的引用
+            Interface.enImp(this,carInterface);//检测接口
+        };
+        car.prototype={
+            constructor:car,
+            getPrice:function () {
+              return 200000;
+            },
+            assemble:function () {
+                document.write('组装汽车...');
+            }
+        };
+        //新的需求:light,icebox......
+
+        var light=function (car) { //car代表原始对象
+           light.supClass.constructor.call(this,car);
+        };
+        extend(light,car);
+        light.prototype={
+            constructor:light,
+            getPrice:function () {
+                return this.car.getPrice()+10000;
+            },
+            assemble:function () {
+                document.write('组装车灯...');
+            }
+        };
+        
+        var icebox=function (car) {
+            icebox.supClass.constructor.call(this,car);
+        };
+        extend(icebox,car);
+        icebox.prototype={
+            constructor:icebox,
+            getPrice:function () {
+                return this.car.getPrice()+20000
+            },
+            assemble:function () {
+                document.write('组装冰箱...');
+            }
+        };
+        var car=new car();
+        alert(car.getPrice());
+        car.assemble();
+        car=new light(car);
+        alert(car.getPrice());
+        car.assemble();
+        car =new icebox(car);
+        alert(car.getPrice());
+        car.assemble();
+        */
+        //装饰者模式不仅可以用在类 还可以用在函数上
+        //让返回的字母变大写
+        function getDate() {
+            return (new Date()).toString();
+        }
+        function daxie(fn) {
+            return function () {
+                return fn.apply(this,arguments).toUpperCase();
+            }
+        }
+        alert(getDate());
+        var getDecDate=daxie(getDate);
+        alert(getDecDate());
+    </script>
+</head>
+<body>
+<div id="div1">我是div1</div>
+<div id="div2">我是div2</div>
+<div id="div3">我是div3</div>
+</body>
+</html>
