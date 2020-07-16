@@ -1,0 +1,23 @@
+享元模式 解决创建大量类似对象而累及内存的问题
+内在数据(前三个 固定) 外在数据(后三个)
+优化的设计模式(优化:时间(运行速度) 空间(内存))
+工厂模式(闭包工厂)
+私有化变量 装已经生产好的车
+写一个方法用来创建一个车
+用传进来的3个静态变量作keys
+如果keys对应的value存在 则返回
+如果不存在 则以新生产的3个属性为keys,保存这台车,然后返回
+单体模式(外在的数据和内在的数据结合在一起)
+通过 jQuery，可以选取（查询，query） HTML 元素，并对它们执行"操作"（actions）
+基础语法: $(selector).action()
+美元符号定义 jQuery
+选择符（selector）"查询"和"查找" HTML 元素
+jQuery 的 action() 执行对元素的操作
+$("p").hide() - 隐藏所有 <p> 元素
+$("p.test").hide() - 隐藏所有 class="test" 的 <p> 元素
+$("#test").hide() - 隐藏 id="test" 的元素
+jQuery 中所有选择器都以美元符号开头：$()
+jQuery 是为事件处理特别设计的
+常用的 jQuery 事件方法:$(document).ready() 方法允许我们在文档完全加载完后执行函数 click() 方法是当按钮点击事件被触发时会调用一个函数。
+该函数在用户点击 HTML 元素时执行。dblclick()当双击元素时，会发生 dblclick 事件
+jQuery hide() 和 show() 通过 jQuery，可以使用 hide() 和 show() 方法来隐藏和显示 HTML 元素

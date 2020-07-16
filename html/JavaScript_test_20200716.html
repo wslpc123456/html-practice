@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8" src="../js/script_test_0710.js"></script>
+    <script type="text/javascript" charset="UTF-8">
+        //享元模式 解决创建大量类似对象而累及内存的问题
+        //内在数据(前三个 固定) 外在数据(后三个)
+        //优化的设计模式(优化:时间(运行速度) 空间(内存))
+        //出厂商 车的型号 车的出厂日期 拥有者 车牌号 登记日期
+        var Car=function (make,model,year) {
+          this.make=make;
+          this.model=model;
+          this.year=year;
+        };
+        Car.prototype={
+            constructor:Car,
+            getMake:function () {
+                return this.make;
+            },
+            getModel:function () {
+                return this.model;
+            },
+            getYear:function () {
+                return this.year;
+            },
+        };
+        //工厂模式(闭包工厂)
+         var CarFactory=(function () {
+              var createdCars={}; //私有化变量 装已经生产好的车
+              return {
+                  //写一个方法用来创建一个车
+                  createCar:function (make,model,year) {
+                      //用传进来的3个静态变量作keys
+                      if(createdCars[make+model+year]){//如果keys对应的value存在 则返回
+                          return createdCars[make+model+year];
+                      }else {//如果不存在 则以新生产的3个属性为keys,保存这台车,然后返回
+                          var car = new Car(make, model, year);
+                          createdCars[make+model+year]=car;
+                          return createdCars[make+model+year];
+                      }
+                  }
+              };
+         })();
+        //单体模式(外在的数据和内在的数据结合在一起)
+        //把登记好的汽车放到这个对象里
+        var CarRecordManager=(function () {
+            var CarRecordDataBase ={};//把登记好的汽车放到这个对象里
+            return {
+                addCarRecord:function (make,model,year,owner,tag,renewDate) {
+                    var car=CarFactory.createCar(make,model,year);
+                }
+            }
+        })();
+        /*
+        //测试内存占用
+        var arr=[];
+        var stime =new Date().getTime();
+        for(var i=0;i<5000000;i++){
+            arr.push(new car('大众','迈腾','20120203','hxd','BJ0001','20130401'));
+        }
+        var etime =new Date().getTime();
+        alert(etime-stime);
+        //runtime2255ms
+        */
+    </script>
+</head>
+<body>
+<div id="div1">111</div>
+</body>
+</html>
