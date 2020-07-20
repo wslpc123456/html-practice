@@ -1,0 +1,11 @@
+实现jQuery对表格和json数据的操作
+渲染函数 输出 counter 到 counter+10 的数据
+下一页 使counter+10 不会>total
+上一页 使counter-10 不会<0
+删除   遍历每一行的第二列(第一行除外) 用del存储已被删除的数据采购订单号
+增加   暂时使用直接输出的方式 无法保存
+用一个函数实现渲染
+$("tr:not(:first)").each(function (i) {
+$(this).children("td:eq(1)").each(function () {}
+用来遍历表格的任意一个单元格
+$('tr td').html('');用来清除表格里的数据

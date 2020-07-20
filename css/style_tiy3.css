@@ -1,0 +1,26 @@
+*{
+    font-size:13px;
+}
+
+table{
+    height:100%;
+    width:100%;
+}
+
+td{
+    height:40px;
+    overflow: hidden;
+}
+
+#head{
+    height: 5%;
+}
+
+#body{
+    height:600px;
+    width: 1365px;
+}
+
+#foot{
+    height:5%;
+}
