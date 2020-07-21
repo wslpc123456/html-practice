@@ -4,7 +4,7 @@
 //删除   用del存储已被删除的数据采购订单号(reduce)和counter 同时删除inter中的相同数据
 //增加   把增加时的counter(页数)和订单号(add)保存到inter中
 let counter = 0;
-let total=73;
+let total = 73;
 let del = [];
 let inter = [];
 $(function () {
@@ -118,7 +118,7 @@ $(function () {
             });
             total = data[0].total;
         });
-        $("#foot span").empty().append("当前页:"+Math.ceil(counter/10+1)+"/总页数:"+Math.ceil(total/10)+" 总行数:"+total);
+        $("#foot span").empty().append("当前页:" + Math.ceil(counter / 10 + 1) + "/总页数:" + Math.ceil(total / 10) + " 总行数:" + total);
     }
 
     Rendering();
