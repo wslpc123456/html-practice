@@ -13,11 +13,17 @@ $(function () {
         let add = prompt("请输入要增加的采购订单号");
         if (add !== null) {
             //通过遍历当前页每一行第二列判断数据是否重复
+            let j=0;
             $("tr").each(function (i) {
                 $(this).children("td:eq(1)").each(function () {
+                    j++;
                     if ($(this).text() === add) {
                         add = null;
                         alert('该订单号已存在');
+                    }
+                    if(j===10){
+                        add=null;
+                        alert('表格已满')
                     }
                 })
             });
