@@ -3,8 +3,7 @@
 }
 
 table {
-    height: 500px;
-    width: 1365px;
+    width: 100%;
 }
 
 td {
@@ -17,8 +16,6 @@ td {
 }
 
 #body {
-    height: 550px;
-    width: 1365px;
 }
 
 #foot {
