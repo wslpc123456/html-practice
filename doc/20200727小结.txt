@@ -1,0 +1,62 @@
+draggable 拖动
+标签:class="easyui-draggable" 
+属性:
+proxy:'clone' 创建一个分身进行拖动
+handle:'selector' 句柄
+revert:true 停止拖动后返回初始位置
+axis:'v'/'h' 只可垂直/水平拖动
+事件:
+onStartDrag 在开始拖动时触发的函数
+onDrag 在拖动过程触发的函数
+onStopDrag 在拖动结束触发的函数
+
+droppable 放置
+标签:class="easyui-droppable"
+属性:accept:'selector' 确定哪些元素能被放置
+事件:
+onDragEnter 被拖元素到放置区内时触发
+onDragOver 经过放置区时触发
+onDragLeave 离开放置区时触发
+onDrop 放入到放置区时触发
+
+resizeable 一个可调整大小的窗口
+标签:class="easyui-resizeable"
+属性:
+disable:true禁止调整大小
+max/min Width/Height:number 最大/最小 宽/高
+事件:
+onStartResize 在开始改变大小时触发的函数
+onReszie 在改变大小过程中触发的函数
+onStopResize 在改变大小结束触发的函数
+
+menu 菜单
+标签:
+class:"easyui-menu"
+属性:
+zindex:n 增加z轴的值
+left:n 左边距位置
+top:n 上边距位置
+align:'left'/'right' 对齐方式
+minWidth:n 最小宽度
+itemHeight:n 高度
+hideOnUnhover:true 鼠标离开自动隐藏菜单
+inline:true 相对父元素进行定位
+fit:true 尺寸自动适配父容器
+noline:true 不显示图标和文字的分割线
+
+菜单项
+标签:class:"menu-sep" 分割线
+属性:
+iconCls:string 文字左侧显示图标
+onclick:function 点击菜单项时调用的函数
+
+linkbutton 按钮
+标签:class="easyui-linkbutton"
+属性:
+width:n 宽度
+height:n 高度
+iconCls:string 小图标
+方法:
+enable/disable 启用/禁用按钮
+select 选择按钮
+resize 重置按钮
