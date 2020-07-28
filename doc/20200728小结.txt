@@ -1,0 +1,64 @@
+splitbutton 分割按钮 一个具有下拉菜单的按钮
+属性:
+menu:'selector' 对应菜单选择器
+duiation:n 划过按钮时菜单持续的时间(毫秒)
+方法 :
+禁用 disable 启用 enable 销毁 destory
+
+switchbutton 开关按钮
+属性:
+reversed:true 反转开关ON和OFF的文本
+onText:ON文本
+offText:OFF文本
+
+panel 面板
+属性
+title:string 标题
+left/top:n 左边距/上边距
+collapse:true 显示可折叠按钮
+minimizable/maximizable:true 显示最小/最大化按钮
+closable:true 显示关闭按钮
+tools 声明已经存在的div标签tools:'selector' 或定义数组tools:[{},{}]
+header 定义面板标题 <header></header> 似乎不能和option一起用
+footer 定义页脚 方法同上
+事件
+on+(Before)+Move/Load/Open/Close/Destory/Collapse/Expand/Resize 触发事件时机
+方法
+clear 清除面板内容
+refresh 刷新面板加载远程数据 用法panel('refresh','src')
+resize 设置面板大小和布局 用法 panel('resize',{})
+move 移动面板到新位置 包含新的left和top属性
+
+tabs 选项卡
+属性:
+width/height:n 宽度与高度
+tools:[{}] / tools:'selector'定义工具栏
+tool/tab Position 工具栏/选项卡位置
+方法:
+add 添加新的选项卡面板
+close 通过标题或者索引关闭选项卡
+getTabindex/getSelected 获取指定选项卡索引 获取指定选项卡
+update 更新指定的选项卡 包含tab和option等属性
+选项卡面板
+独有属性:
+closable:true 选项卡增加一个关闭按钮
+
+progressbar 进度条
+属性:
+value:n 值
+事件
+onChange 在值更改时触发
+方法
+getValue 返回当前值
+setValue 设置新的值
+
+tooltip 提示
+属性:
+position:l r t b 消息框位置
+content:str 消息框内容
+show/hide Event/Delay:str 激发什么事件/延迟多少秒时显示/隐藏提示框
+事件
+on Show/Hide/Update/Positon/Destory 在消息框显示/隐藏/更新/位置改变/销毁时触发
+方法
+tip 返回tip元素对象
+arrow 返回箭头元素对象

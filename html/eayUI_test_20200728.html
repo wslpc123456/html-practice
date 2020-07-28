@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../js/Easyui_test_20200728.js"></script>
+</head>
+<body>
+<a href="javascript:void(0)" id="sb" onclick="javascript:alert('ok')">new game</a>
+<div id="menu" class="easyui-menu" style="width:100px">
+    <div data-option="name:'new'">新的</div>
+    <div data-option="name:'ctn'">继续</div>
+    <div data-option="name:'save'">保存</div>
+    <div data-option="name:'end'">结束</div>
+</div>
+
+<input class="easyui-switchbutton" checked data-options="onText:'Yes',offText:'No'">
+
+<div style="width:100%">
+<div id="x" class="easyui-panel" style="width:137px;padding:10px;background: #fafafa"
+     data-options="title:'标题',iconCls:'icon-save',minimizable:true,maximizable:true,closable:true">
+    <p>panel 1</p>
+    <p>panel 2</p>
+</div>
+</div>
+<div id='tab' class="easyui-tabs" style="width:500px;height:250px">
+    <div title="panel 1">1</div>
+    <div title="panel 2">2</div>
+    <div title="panel 3">3</div>
+</div>
+<div id="tab-tools">
+    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-add"></a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-save"></a>
+</div>
+
+<div id="vl" style="width: 400px"></div>
+<a class="easyui-tooltip" data-options="content:'一个有用的提示'">点击查看提示</a>
+</body>
+</html>
