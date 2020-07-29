@@ -1,0 +1,90 @@
+validatebox 验证框
+属性:
+required:true 定义为必填字段
+validType:'url'/'email'/... 定义验证类型
+missingMessage 未填写时提示信息
+invalidMessage 验证无效时提示信息
+方法
+validate 验证文本框内容是否都有效
+
+textbox 文本框
+属性
+value:str 默认值
+icons:obj 处理图标类型 是否禁用和点击图标后的事件
+事件:
+onChange 在字段改变时触发
+
+combo 自定义下拉框
+属性:
+panel (Max/Min) Height/Width:n 下拉面板(最大/最小)宽/高
+事件
+on Show/HidePanel 下拉面板显示隐藏时触发
+方法
+自定义下拉框的方法扩展自validatebox(验证框)
+
+combobox 下拉列表框
+属性:
+url:string 通过远程加载数据
+valueField:str 基础数据值名称绑定到该下拉列表框。
+textField:str 基础数据字段名称绑定到该下拉列表框。
+data:obj 设置数据
+事件
+onBeforeLoad 在请求加载数据之前触发
+onLoadSuccess/Error 在加载远程数据成功/失败时触发
+onSelect 在用户选择列表项的时候触发
+方法
+getData 返回加载数据
+loadData 读取本地列表数据
+reload 请求远程列表数据。通过'url'参数重写原始URL值
+setValues 设置下拉列表框值数组
+
+numberbox 数字输入框
+属性
+value 默认值
+min/max 最小/最大值
+precision 小数点后位数
+事件
+onChange 字段值改变时触发
+方法
+set/get Value 设置/获取数值输入框的值
+
+datebox 日期输入框
+属性
+currentText:str 当天按钮名称
+closeText:str 关闭按钮名称
+事件
+onSelect 在用户选择了一个日期的时候触发
+方法
+calendar 获取日历对象
+setValue 设置日期输入框的值
+
+spinner 微调
+属性
+increment:n 在点击微调按钮的时候的增量值
+事件
+onSpinUp 在用户点击向上微调按钮的时候触发
+onSpinDown 在用户点击向下微调按钮的时候触发
+onChange  在改变当前值的时候触发
+方法
+resize 调整组件宽度
+
+数字微调 numberspinner
+时间微调 timespinner
+
+slider 滑动条
+属性
+mode:'h'/'v' 水平或垂直
+showTip:true 显示值信息提示
+rule:['0','|','25'] 显示下标
+事件
+onSlideStart 在开始拖拽滑动条的时候触发
+onSlideEnd 在结束拖拽滑动条的时候触发
+onComplete 在滑块值被用户改变的时候触发，无论是拖动还是点击滑块
+
+filebox 文件框
+属性
+buttonText:str 按钮上显示的文本
+buttonIcon:str 按钮显示的图标
+accept:str 接收的文件类型
+multiple:false 接收多个文件
+separator:str 多个文件的分割符
