@@ -1,0 +1,45 @@
+Pagination 分页
+属性
+total:n 总记录数，在分页控件创建时初始的值
+pageSize:n 页面大小
+事件
+onSelectPage 用户选择一个新页面的时候触发。回调函数包含2个参数 页数和页面大小
+方法
+refresh 刷新并显示分页栏信息
+select 选择一个新页面，页面索引从1开始
+
+SearchBox 搜索
+属性
+prompt:str 显示提示消息
+value:str 输入的值
+menu:'selector' 搜索类型菜单。每个菜单项都具备一下属性：name：搜索类型名称。elected：自定义默认选中的搜索类型名称
+searcher:fn(value,name) 在用户按下搜索按钮或回车键的时候调用searcher函数
+
+datagrid 数据表格
+属性
+columns:array 为列配置对象
+url:str URL从远程站点请求数据
+toolbar:array/'selector' 定义顶部面板
+data:obj 预加载数据
+列属性
+title:str 列标题文本
+field:str  列字段名称
+sortable:true 允许使用排序
+align:'left' 'right' 'center'
+editor:str obj 指明编辑类型。当字符串指明编辑类型的时候，对象包含2个属性：type：字符串 options：对象，object, 该编辑器属性对应于编辑类型
+事件
+onLoadSuccess/Error 在加载成功/失败时触发
+onClickRow 包含索引index和记录row两个参数 在点击一行时触发
+onDblClickRow 在用户双击一行的时候触发
+onClickCell 在用户点击一个单元格的时候触发
+方法
+getPager 返回页面对象
+beginEdit 开始编辑行
+getgetEditor 获取指定编辑器，options包含2个属性：index：行索引。 field：字段名称
+load 加载和显示第一页的所有行 如果指定param可以执行查询
+reload 刷新
+
+DataList 数据列表
+属性:
+lines:true 显示行号
+checkbox:true 在每行开头显示复选框

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/Easyui_test_20200730.js"></script>
+</head>
+<body>
+分页测试
+<div id="pp" class="easyui-pagination" data-options="total:100,pageSize:10" style="border: 1px solid"></div>
+<div id="pe"></div>
+
+搜索测试
+<input id="check">
+<div id="mm" style="width: 120px">
+    <div data-options="iconCls:'icon-ok',name:'OK'">OK</div>
+    <div data-options="iconCls:'icon-save',name:'Save'">Save</div>
+</div>
+
+表格
+<div id="dg"></div>
+<input type="button" id="btn" value="显示全部">
+
+数据列表
+<ul class="easyui-datalist" title="DataList" style="width:400px;height:250px" data-options="checkbox:true,lines:true">
+    <li value="AL">Alabama</li>
+    <li value="AK">Alaska</li>
+    <li value="AZ">Arizona</li>
+    <li value="AR">Arkansas</li>
+    <li value="CA">California</li>
+    <li value="CO">Colorado</li>
+</ul>
+
+</body>
+</html>
