@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/style_0731.css">
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../js/Easyui_test_20200803.js"></script>
+</head>
+<body >
+<div id="aa" class="easyui-layout">
+    <div data-options="region:'north'" style="height:12%">
+        <div class="bb"><label>供应商编码/名称</label><input ></div>
+        <div class="bb"><label>采购订单编码</label><input ></div>
+        <div class="bb"><label>采购订单类型</label><select >
+            <option>全部</option>
+            <option>标准</option>
+            <option>低值</option>
+            <option>国内</option>
+        </select></div>
+        <div class="bb"><label>采购订单状态</label><select >
+            <option>全部</option>
+            <option>已回复订单</option>
+            <option>未回复订单</option>
+        </select></div>
+        <div class="bb"><label>物料编码/名称</label><input ></div>
+        <div style="clear: both"></div>
+        <div class="bb"><label>采购组</label><select >
+            <option>全部</option>
+            <option>陶瓷电路</option>
+            <option>包装材料</option>
+            <option>钣金加工件</option>
+        </select></div>
+        <div class="bb"><label>创建时间</label><input class="easyui-datebox" data-options="width:120,height:30"></div>
+        <div class="bb"><label>至</label><input class="easyui-datebox" data-options="width:120,height:30"></div>
+        <div class="bb">
+            <a id="btn1" class="easyui-linkbutton" data-options="iconCls:'icon-search',text:'查询'" href="#"></a>
+            <a id="btn2" class="easyui-linkbutton" data-options="iconCls:'icon-clear',text:'重置'" href="#"></a>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="height: 4%">
+        <a id="btn3" class="easyui-linkbutton" data-options="iconCls:'icon-reload',text:'手工同步订单',plain:true" href="#"></a>
+        <a id="btn4" class="easyui-linkbutton" data-options="iconCls:'icon-help',text:'审批',plain:true" href="#"></a>
+        <a id="btn5" class="easyui-linkbutton" data-options="iconCls:'icon-tip',text:'查看',plain:true" href="#"></a>
+        <a id="btn6" class="easyui-linkbutton" data-options="iconCls:'icon-ok',text:'批量确认',plain:true" href="#"></a>
+        <a id="btn7" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',text:'批量拒绝',plain:true" href="#"></a>
+        <a id="btn8" class="easyui-linkbutton" data-options="iconCls:'icon-redo',text:'重新发布',plain:true" href="#"></a>
+        <a id="btn9" class="easyui-linkbutton" data-options="iconCls:'icon-more',text:'订单导出',plain:true" href="#"></a>
+        <a id="btn10" class="easyui-linkbutton" data-options="iconCls:'icon-more',text:'订单明细导出',plain:true" href="#"></a>
+    </div>
+    <div data-options="region:'south'" style="height:84%">
+        <div id="cc"></div>
+    </div>
+</div>
+</body>
+</html>

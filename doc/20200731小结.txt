@@ -1,0 +1,6 @@
+layout 布局
+区域面板属性
+region:'north south east west center' 定义面板位置
+title:str 标题
+split:true 可以通过分割栏改变面板大小
+//不设置子元素宽度 中间会自动折叠
