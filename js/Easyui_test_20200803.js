@@ -1,4 +1,8 @@
 window.onload=function () {
+    loadDataGrid();
+    show();
+};
+function loadDataGrid(){
     $("#cc").datagrid({
         width:1350,
         height:550,
@@ -38,37 +42,34 @@ window.onload=function () {
             },
         ]],
     });
-
-
-    function show(){
-        $.ajax({
-            url:'test2.json',
-            type:'get',
-            dataType:'json',
-            success:function(data){
-                $("#cc").datagrid('loadData',data);
-                $("#cc").datagrid("loadData", data.slice(0, 10),console.log(data));
-                //分页代码块
-                var pager = $("#cc").datagrid("getPager");//返回页面对象
-                //建立分页
-                pager.pagination({
-                    total: data.length,
-                    onSelectPage: function (pageN, pageSize) {
-                        //定义起始显示的数据行数和末尾显示数据的行数
-                        var start = (pageN - 1) * pageSize;
-                        var end = start + pageSize;
-                        $("#dg").datagrid("loadData",data.slice(start, end));
-                        pager.pagination('refresh', {
-                            total: data.length,
-                            pageNumber: pageN
-                        });
-                    }
-                });
-            },
-            err:function(xhr){
-                alert(xhr.status);
-            }
-        });
-    }
-    show();
-};
+}
+function show(){
+    $.ajax({
+        url:'test.json',
+        type:'post',
+        dataType:'json',
+        success:function(data){
+            $("#cc").datagrid("loadData", data[0].rows.slice(0, 10));
+            console.log(data[0].rows);
+            //分页代码块
+            var pager = $("#cc").datagrid("getPager");//返回页面对象
+            //建立分页
+            pager.pagination({
+                total: data[0].rows.length,
+                onSelectPage: function (pageN, pageSize) {
+                    //定义起始显示的数据行数和末尾显示数据的行数
+                    var start = (pageN - 1) * pageSize;
+                    var end = start + pageSize;
+                    $("#dg").datagrid("loadData",data[0].rows.slice(start, end));
+                    pager.pagination('refresh', {
+                        total: data.length,
+                        pageNumber: pageN
+                    });
+                }
+            });
+        },
+        err:function(xhr){
+            alert(xhr.status);
+        }
+    });
+}

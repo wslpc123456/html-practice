@@ -28,30 +28,30 @@ window.onload=function () {
         }
     });
 
-$("#dg").datagrid({
-   width:500,
-   height:500,
-    fitColumns:true,
-    rownumbers : true,
-    pagination: true, //显示分页栏
-    pageSize: 10,//一页显示行数
-    pageList:[10,20,50],
-    url:'test2.json',
-    columns:[[
-        {
-       field:'orderCode',title:'订单号',width:100
-    },
-        {
-       field:'id',title:'ID',width:100
-    },
-        {
-        field:'orderDate',title:'Date',width:100
-        }
+    $("#dg").datagrid({
+        width:500,
+        height:500,
+        fitColumns:true,
+        rownumbers : true,
+        pagination: true, //显示分页栏
+        pageSize: 10,//一页显示行数
+        pageList:[10,20,50],
+        url:'test2.json',
+        columns:[[
+            {
+                field:'orderCode',title:'订单号',width:100
+            },
+            {
+                field:'id',title:'ID',width:100
+            },
+            {
+                field:'orderDate',title:'Date',width:100
+            }
         ]],
-});
-  $("#btn").click(function () {
-      $("#dg").datagrid('reload');
-  });
+    });
+    $("#btn").click(function () {
+        $("#dg").datagrid('reload');
+    });
 
     function show(){
         $.ajax({
@@ -59,7 +59,6 @@ $("#dg").datagrid({
             type:'get',
             dataType:'json',
             success:function(data){
-                $("#dg").datagrid('loadData',data);
                 $("#dg").datagrid("loadData", data.slice(0, 10),console.log(data));
                 //分页代码块
                 var pager = $("#dg").datagrid("getPager");//返回页面对象

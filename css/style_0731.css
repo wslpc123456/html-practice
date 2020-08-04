@@ -28,13 +28,28 @@ div .bb{
     line-height: 200%;
     width:49.5%
 }
-#aa input,select{
+#aa input,#aa select,.cc input,.cc select{
     vertical-align: middle;
     border-style: solid;
     border-width:1px;
     height:100%;
     width:49.5%;
 }
+
+div .cc{
+    width:75%;
+    height:10%;
+}
+.cc label{
+    display: inline-block;;
+    border:1px solid grey;
+    vertical-align: middle;
+    text-align: center;
+    height:100%;
+    line-height: 200%;
+    width:49.5%
+}
+
 .panel-body {
     font-size: 12px;
 }
