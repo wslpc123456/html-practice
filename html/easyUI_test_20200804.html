@@ -12,26 +12,29 @@
 </head>
 <body>
 <div id="button">
-    <a id="add" href="#" class="easyui-linkbutton" onclick="javascript:$('#menu').dialog('open')" data-options="iconCls:'icon-add'">增加</a>
-    <a id="del" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
-    <a id="edit" href="#" class="easyui-linkbutton" onclick="javascript:$('#menu').dialog('open')" data-options="iconCls:'icon-more'">编辑</a>
+    <a id="add" href="#" class="easyui-linkbutton" onclick="javascript:$('#menu').dialog('open');$('#savebtn').hide();"
+       data-options="iconCls:'icon-add'">增加</a>
+    <a id="del" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',disabled:true">删除</a>
+    <a id="edit" href="#" class="easyui-linkbutton"  data-options="iconCls:'icon-more',disabled:true">编辑</a>
+    <a id="see" href="#" class="easyui-linkbutton"  data-options="iconCls:'icon-tip'">查看</a>
 </div>
-<div id="menu" class="easyui-dialog" style="width:400px;height:400px" title="提示" data-options="minimizable:true,maximizable:true,modal:true">
+<div id="menu" class="easyui-dialog" style="width:400px;height:400px" title="提示"
+     data-options="minimizable:true,maximizable:true,modal:true">
     <form action="" method="post" id="addFrom">
-    <div  class="cc"><label>状态:</label><input id="ip1" type="text" name="dataStatus"></div>
-    <div  class="cc"><label>采购订单号:</label><input id="ip2" type="text" name="orderCode"></div>
-    <div  class="cc"><label>供应商编码:</label><input id="ip3" type="text" name="supplierCode"></div>
-    <div  class="cc"><label>供应商名称:</label><input id="ip4" type="text" name="supplierName"></div>
-    <div  class="cc"><label>公司:</label><input id="ip5" type="text" name="companyCodeAndName"></div>
-    <div  class="cc"><label>采购组:</label><input id="ip6" type="text" name="purchaseGroupName"></div>
-    <div  class="cc"><label>采购订单类型:</label><input id="ip7" type="text" name="sapPoType"></div>
-    <div  class="cc"><label>货币代码:</label><input id="ip8" type="text" name="currencyCode"></div>
-    <div  class="cc"><label>创建日期:</label><input id="ip9" type="text" name="createDateStr"></div>
-    <div class="cc">
-        <a href="javascript:void(0)" class="easyui-linkbutton" id="addbtn">提交</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" id="savebtn">保存</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#menu').dialog('close')">取消</a>
-    </div>
+        <div class="cc"><label>状态:</label><input id="ip1" type="text" name="dataStatus"></div>
+        <div class="cc"><label>采购订单号:</label><input id="ip2" type="text" name="orderCode"></div>
+        <div class="cc"><label>供应商编码:</label><input id="ip3" type="text" name="supplierCode"></div>
+        <div class="cc"><label>供应商名称:</label><input id="ip4" type="text" name="supplierName"></div>
+        <div class="cc"><label>公司:</label><input id="ip5" type="text" name="companyCodeAndName"></div>
+        <div class="cc"><label>采购组:</label><input id="ip6" type="text" name="purchaseGroupName"></div>
+        <div class="cc"><label>采购订单类型:</label><input id="ip7" type="text" name="sapPoType"></div>
+        <div class="cc"><label>货币代码:</label><input id="ip8" type="text" name="currencyCode"></div>
+        <div class="cc"><label>创建日期:</label><input id="ip9" type="text" name="createDateStr"></div>
+        <div class="cc">
+            <a href="javascript:void(0)" class="easyui-linkbutton" id="addbtn">提交</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" id="savebtn">保存</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#menu').dialog('close')">取消</a>
+        </div>
     </form>
 </div>
 <div id="dg"></div>

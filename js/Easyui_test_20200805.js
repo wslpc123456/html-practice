@@ -1,5 +1,5 @@
 let rows;
-let select=[],selectP=0;
+let select = [], selectP = 0;
 $(function () {
     $.ajaxSettings.async = false;
     $.ajax({
@@ -27,7 +27,7 @@ $(function () {
  */
 function loadDataGird() {
     $("#dg").datagrid({
-        width: 1350,
+        width: 1375,
         height: 550,
         fitColumns: true,
         pagination: true,
@@ -36,13 +36,16 @@ function loadDataGird() {
         url: 'test.json',
         columns: [[
             {
-                field: 'dataStatus', title: '状态', width: 150, checkbox: true
+                field: 'checkbox', title: '复选框', checkbox: true
             },
             {
-                field: 'orderCode', title: '采购订单号', width: 150
+                field: 'dataStatus', title: '状态', width: 100
             },
             {
-                field: 'supplierCode', title: '供应商编码', width: 150
+                field: 'orderCode', title: '采购订单号', width: 100
+            },
+            {
+                field: 'supplierCode', title: '供应商编码', width: 50
             },
             {
                 field: 'supplierName', title: '供应商名称', width: 150
@@ -51,37 +54,37 @@ function loadDataGird() {
                 field: 'companyCodeAndName', title: '公司', width: 150
             },
             {
-                field: 'purchaseGroupName', title: '采购组', width: 150
+                field: 'purchaseGroupName', title: '采购组', width: 75
             },
             {
                 field: 'sapPoType', title: '采购订单类型', width: 150
             },
             {
-                field: 'currencyCode', title: '货币代码', width: 150
+                field: 'currencyCode', title: '货币代码', width: 50
             },
             {
-                field: 'createDateStr', title: '创建日期', width: 150
+                field: 'createDateStr', title: '创建日期', width: 100
             },
         ]],
         //事件:选择一行
-        onSelect:function(){
+        onSelect: function () {
             $('#edit').linkbutton('enable');
             $('#del').linkbutton('enable');
         },
         //事件:选择所有行
-        onSelectAll:function(){
+        onSelectAll: function () {
             $('#edit').linkbutton('enable');
             $('#del').linkbutton('enable');
         },
         //事件:取消选择一行
-        onUnselect:function(){
-            if($('#dg').datagrid('getSelections').length===0){
+        onUnselect: function () {
+            if ($('#dg').datagrid('getSelections').length === 0) {
                 $('#edit').linkbutton('disable');
                 $('#del').linkbutton('disable');
             }
         },
         //事件:取消选择所有行
-        onUnselectAll:function () {
+        onUnselectAll: function () {
             $('#edit').linkbutton('disable');
             $('#del').linkbutton('disable');
         }
@@ -110,20 +113,20 @@ function addData() {
 function editData() {
     $('#menu').dialog('open');
     $('#savebtn').show();
-    if(select.length===0){
+    if (select.length === 0) {
         select = $('#dg').datagrid('getSelections');
     }
-    var i=selectP;
-        console.log('编辑的行为' + select[i].orderCode);
-        $('#ip1').val(select[i].dataStatus);
-        $('#ip2').val(select[i].orderCode);
-        $('#ip3').val(select[i].supplierCode);
-        $('#ip4').val(select[i].supplierName);
-        $('#ip5').val(select[i].companyCodeAndName);
-        $('#ip6').val(select[i].purchaseGroupName);
-        $('#ip7').val(select[i].sapPoType);
-        $('#ip8').val(select[i].currencyCode);
-        $('#ip9').val(select[i].createDateStr);
+    var i = selectP;
+    console.log('编辑的行为' + select[i].orderCode);
+    $('#ip1').val(select[i].dataStatus);
+    $('#ip2').val(select[i].orderCode);
+    $('#ip3').val(select[i].supplierCode);
+    $('#ip4').val(select[i].supplierName);
+    $('#ip5').val(select[i].companyCodeAndName);
+    $('#ip6').val(select[i].purchaseGroupName);
+    $('#ip7').val(select[i].sapPoType);
+    $('#ip8').val(select[i].currencyCode);
+    $('#ip9').val(select[i].createDateStr);
 }
 
 /*
@@ -144,22 +147,22 @@ function delData() {
 保存数据
  */
 function saveData() {
-    let pos=$.inArray(select[selectP],rows);
+    let pos = $.inArray(select[selectP], rows);
     let record = {};
     $.each($("#addFrom").serializeArray(), function (i, item) {
         record[item.name] = item.value;
     });
-    rows.splice(pos,1,record);
+    rows.splice(pos, 1, record);
     console.log('保存成功');
     $('#menu').dialog('close');
     Rendering();
-    if(selectP+1<select.length){
+    if (selectP + 1 < select.length) {
         selectP++;
         editData();
     }
-    else{
-        select=[];
-        selectP=0;
+    else {
+        select = [];
+        selectP = 0;
     }
 }
 
@@ -167,9 +170,9 @@ function saveData() {
 查看数据
  */
 function seeData() {
-    $.messager.prompt('提示信息', '请输入需要查询的订单号：', function(val){
-        for(var i=0;i<rows.length;i++){
-            if(rows[i].orderCode===val){
+    $.messager.prompt('提示信息', '请输入需要查询的订单号：', function (val) {
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].orderCode === val) {
                 $('#menu').dialog('open');
                 $('#ip1').val(rows[i].dataStatus);
                 $('#ip2').val(rows[i].orderCode);
