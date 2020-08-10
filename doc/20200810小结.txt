@@ -1,0 +1,15 @@
+导入: layui.css 和layui.js两个文件
+引用模块时需要使用layui.use('mkname',function(){})
+布局:<div class="container"> 宽度固定的容器  <div class="layui-fluid">宽度100%适应的容器
+采用 class="layui-row" 来定义行 class="layui-col-mdN"来对行进行等分
+class="layui-col-spaceN"来设置等分之间的间隔 支持列之间为 1px-30px 区间的所有双数间隔，以及 1px、5px、15px、25px 的单数间隔
+class="layui-col-md-offsetN"来控制列向右偏移 可以用来向右对齐
+class="layui-icon"来定义一个图标 可以通过font-size定义大小 color定义颜色
+class="layui-anim"来定义动画 在后面加上layui-anim-rotate等来定义动画效果
+class="layui-btn"来定义一个基础按钮 追加layui-btn-normal来定义不同的风格 layui-btn-lg/sm/xs等定义大小
+class="layui-form"来定义表单(必须)
+class="layui-input" 定义输入框 required：注册浏览器所规定的必填字段 lay-verify：注册form模块需要验证的类型 class="layui-input"：layui.css提供的通用CSS类
+在option下添加optgroup标签可以给select分组 设定属性 lay-search 来开启搜索匹配功能
+属性lay-skin可设置复选框的风格 通过设定 lay-skin="switch" 可以形成开关风格
+class="layui-textarea"：layui.css提供的通用CSS类
+
