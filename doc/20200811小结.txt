@@ -1,0 +1,10 @@
+class="layui-nav" 来定义一个导航栏 需要提前导入element模块 class="layui-nav-item"来设置选项
+class="layui-nav-child"来设置二级菜单 class="layui-badge"用来内置图片
+通过添加layui-bg-green来设置背景颜色 水平有layui-bg-cyan（藏青）、layui-bg-molv（墨绿）、layui-bg-blue（艳蓝）三种颜色
+而竖直只有藏青一种颜色 添加layui-nav-side设置侧边栏,即占满左边的导航栏
+通过设置class="layui-breadcrumb" lay-separator="-"在元素之间添加分隔符
+通过div class="layui-tab"  ul class="layui-tab-title"设置选项卡标题 div class="layui-tab-content"设置选项卡内容 通过追加class：layui-tab-brief 来设定简洁风格
+对父容器设置lay-allowClose="true" 来允许Tab选项卡被删除
+class="layui-progress" 来设置进度条  lay-percent ：代表进度条的初始百分比
+class="layui-card卡片面板 有header和body两个属性
+class="layui-collapse" 折叠面板 每个面板都有item title 和content三个部分 layui-show可以默认展开

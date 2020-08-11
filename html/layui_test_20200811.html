@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../js/Layui_test_20200807.js"></script>
+</head>
+<body>
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">网站设置</li>
+        <li>用户管理</li>
+        <li>权限分配</li>
+        <li>商品管理</li>
+        <li>订单管理</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+        <div class="layui-tab-item">内容4</div>
+        <div class="layui-tab-item">内容5</div>
+    </div>
+    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+        <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">默认展开</a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:;">选项1</a></dd>
+                <dd><a href="javascript:;">选项2</a></dd>
+                <dd><a href="">跳转</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">解决方案</a>
+            <dl class="layui-nav-child">
+                <dd><a href="">移动模块</a></dd>
+                <dd><a href="">后台模版</a></dd>
+                <dd><a href="">电商平台</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">产品</a></li>
+        <li class="layui-nav-item"><a href="">大数据</a></li>
+    </ul>
+</div>
+<div class="layui-tab" lay-allowClose="true">
+    <ul class="layui-tab-title">
+        <li class="layui-this">网站设置</li>
+        <li>用户基本管理</li>
+        <li>权限分配</li>
+        <li>全部历史商品管理文字长一点试试</li>
+        <li>订单管理</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">1</div>
+        <div class="layui-tab-item">2</div>
+        <div class="layui-tab-item">3</div>
+        <div class="layui-tab-item">4</div>
+        <div class="layui-tab-item">5</div>
+        <div class="layui-tab-item">6</div>
+    </div>
+</div>
+
+<div class="layui-progress layui-progress-big" lay-showPercent="yes">
+    <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+</div>
+
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">杜甫</h2>
+        <div class="layui-colla-content layui-show">内容区域</div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">李清照</h2>
+        <div class="layui-colla-content layui-show">内容区域</div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">鲁迅</h2>
+        <div class="layui-colla-content layui-show">内容区域</div>
+    </div>
+</div>
+</body>
+</html>
